@@ -1,0 +1,13 @@
+xxl:
+  job:
+#    open: 0
+    accessToken:
+    admin:
+      addresses: http://127.0.0.1:6100/job-server
+    executor:
+      appname: ${spring.application.name}
+      address:
+      ip:
+      port: 9995
+      logpath: /log/xxl-job/
+      logretentiondays: 30
