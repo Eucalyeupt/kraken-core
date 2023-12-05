@@ -48,9 +48,6 @@ public class DictCache {
 
     /**
      * 获取系统配置
-     *
-     * @param code
-     * @return
      */
     public static String getSysConfig(String code) {
         return getDictValue(code, sysConfigKey);

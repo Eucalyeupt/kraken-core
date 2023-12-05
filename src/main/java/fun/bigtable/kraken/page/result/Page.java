@@ -229,9 +229,6 @@ public class Page<E> extends ArrayList<E> {
 
     /**
      * 设置页码
-     *
-     * @param pageNum
-     * @return
      */
     public Page<E> pageNum(int pageNum) {
         //分页合理化，针对不合理的页码自动处理
@@ -241,9 +238,6 @@ public class Page<E> extends ArrayList<E> {
 
     /**
      * 设置页面大小
-     *
-     * @param pageSize
-     * @return
      */
     public Page<E> pageSize(int pageSize) {
         this.pageSize = pageSize;
@@ -253,9 +247,6 @@ public class Page<E> extends ArrayList<E> {
 
     /**
      * 是否执行count查询
-     *
-     * @param count
-     * @return
      */
     public Page<E> count(Boolean count) {
         this.total = count ? Page.SQL_COUNT : Page.NO_SQL_COUNT;
@@ -264,9 +255,6 @@ public class Page<E> extends ArrayList<E> {
 
     /**
      * 设置合理化
-     *
-     * @param reasonable
-     * @return
      */
     public Page<E> reasonable(Boolean reasonable) {
         setReasonable(reasonable);
@@ -275,9 +263,6 @@ public class Page<E> extends ArrayList<E> {
 
     /**
      * 当设置为true的时候，如果pagesize设置为0（或RowBounds的limit=0），就不执行分页，返回全部结果
-     *
-     * @param pageSizeZero
-     * @return
      */
     public Page<E> pageSizeZero(Boolean pageSizeZero) {
         setPageSizeZero(pageSizeZero);

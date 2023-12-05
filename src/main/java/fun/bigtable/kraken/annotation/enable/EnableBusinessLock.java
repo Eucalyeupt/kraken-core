@@ -6,6 +6,11 @@ import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
+/**
+ * 简易的业务锁，使用BusinessLock注解锁定
+ *
+ * @see fun.bigtable.kraken.annotation.BusinessLock
+ */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

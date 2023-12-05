@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
+/**
+ * 启用默认的异常处理器
+ * @see GlobalDefaultExceptionHandler
+ */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

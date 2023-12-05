@@ -282,7 +282,6 @@ public class DesensitiseUtils {
      * @param sourceStr   待处理字符串
      * @param begin       开始替换位置
      * @param replacement 替换字符,默认*
-     * @return
      */
     public static String maskRetainLeft(String sourceStr, int begin, String replacement) {
         if (StringUtils.isBlank(sourceStr)) {
@@ -302,7 +301,6 @@ public class DesensitiseUtils {
      * @param sourceStr   待处理字符串
      * @param end         脱敏结束位置
      * @param replacement 替换字符,默认*
-     * @return
      */
     public static String maskRetainRight(String sourceStr, int end, String replacement) {
         if (StringUtils.isBlank(sourceStr)) {
@@ -322,7 +320,6 @@ public class DesensitiseUtils {
      * @param sourceStr     待处理字符串
      * @param sensitiveSize 脱敏长度
      * @param replacement   替换字符,默认*
-     * @return
      */
     public static String maskRight(String sourceStr, int sensitiveSize, String replacement) {
         if (StringUtils.isBlank(sourceStr)) {
@@ -342,7 +339,6 @@ public class DesensitiseUtils {
      * @param sourceStr     待处理字符串
      * @param sensitiveSize 脱敏长度
      * @param replacement   替换字符,默认*
-     * @return
      */
     public static String maskLeft(String sourceStr, int sensitiveSize, String replacement) {
         if (StringUtils.isBlank(sourceStr)) {

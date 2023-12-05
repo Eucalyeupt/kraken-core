@@ -2,6 +2,9 @@ package fun.bigtable.kraken.annotation.enable;
 
 import java.lang.annotation.*;
 
+/**
+ * 引入所有启用注解
+ */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -10,5 +13,6 @@ import java.lang.annotation.*;
 @EnableDictCache
 @EnableExceptionHandler
 @DisableDataSource
+@EnableCommonWebApi
 public @interface EnableAll {
 }

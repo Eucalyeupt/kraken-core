@@ -29,20 +29,12 @@ public class AESOperator {
 
     /**
      * 加密
-     *
-     * @param content
-     * @return
-     * @throws Exception
      */
     public static String encrypt(String content) throws Exception {
         return encrypt(content, KEY, VECTOR);
     }
     /**
      * 加密
-     *
-     * @param content
-     * @return
-     * @throws Exception
      */
     public static String encrypt(String content,String key) throws Exception {
         return encrypt(content, key, VECTOR);
@@ -50,12 +42,6 @@ public class AESOperator {
 
     /**
      * 加密
-     *
-     * @param content
-     * @param key
-     * @param vector
-     * @return
-     * @throws Exception
      */
     public  static String encrypt(String content, String key, String vector) throws Exception {
         if (key == null) {
@@ -75,32 +61,18 @@ public class AESOperator {
 
     /**
      * 解密
-     *
-     * @param content
-     * @return
-     * @throws Exception
      */
     public static String decrypt(String content) throws Exception {
         return decrypt(content, KEY, VECTOR);
     }
     /**
      * 解密
-     *
-     * @param content
-     * @return
-     * @throws Exception
      */
     public static String decrypt(String content,String key) throws Exception {
         return decrypt(content, key, VECTOR);
     }
     /**
      * 解密
-     *
-     * @param content
-     * @param key
-     * @param vector
-     * @return
-     * @throws Exception
      */
     public static String decrypt(String content, String key, String vector) throws Exception {
         try {
