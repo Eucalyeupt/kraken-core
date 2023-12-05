@@ -14,11 +14,11 @@ import java.util.regex.Pattern;
  * 脱敏工具类
  *
  */
-public class DesensitiseUtil {
+public class DesensitiseUtils {
 
     public static String DEFAULT_REPLACEMENT = "*";
 
-    private static final Logger logger = LoggerFactory.getLogger(DesensitiseUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(DesensitiseUtils.class);
 
     /**
      * 手机号脱敏
@@ -72,7 +72,7 @@ public class DesensitiseUtil {
             Matcher phoneMatcher = phonePattern.matcher(mobile);
             if (phoneMatcher.find()) {
                 String phoneNumber = phoneMatcher.group();
-                String newPhoneNumber = DesensitiseUtil.desensitizeMobile(phoneNumber);
+                String newPhoneNumber = DesensitiseUtils.desensitizeMobile(phoneNumber);
                 Matcher matcher = phonePattern.matcher(mobile);
                 return matcher.replaceAll(newPhoneNumber);
             }

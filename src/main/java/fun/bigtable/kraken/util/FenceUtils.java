@@ -13,7 +13,7 @@ import fun.bigtable.kraken.util.fence.WarningRuleFence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FenceUtil {
+public class FenceUtils {
 
     /**
      * 回转数法判断点是否在多边形内部
@@ -83,7 +83,7 @@ public class FenceUtil {
                 DefaultTrace center = new DefaultTrace();
                 center.setLat(split[1]);
                 center.setLon(split[0]);
-                return FenceUtil.circleFence(center, position, warningRuleFence.getRadius());
+                return FenceUtils.circleFence(center, position, warningRuleFence.getRadius());
             case CUSTOM:
                 JsonParser parser = new JsonParser();
                 JsonArray jsonArray = parser.parse(warningRuleFence.getFenceBorder()).getAsJsonObject().getAsJsonArray("position");
@@ -94,7 +94,7 @@ public class FenceUtil {
                     poly.add(DefaultTrace.DefaultTraceBuilder.aDefaultTrace().lon(jsonElement.getAsJsonArray().get(0).getAsString()).lat(jsonElement.getAsJsonArray().get(1).getAsString()).build());
                 }
 
-                return FenceUtil.windingNumber(position, poly);
+                return FenceUtils.windingNumber(position, poly);
             case AREA:
                 parser = new JsonParser();
                 String areaStr = HttpUtil.get("https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=" + warningRuleFence.getAreaCode());
@@ -107,7 +107,7 @@ public class FenceUtil {
                 }
 
                 poly.remove(0);
-                return FenceUtil.windingNumber(position, poly);
+                return FenceUtils.windingNumber(position, poly);
             default:
                 return false;
         }

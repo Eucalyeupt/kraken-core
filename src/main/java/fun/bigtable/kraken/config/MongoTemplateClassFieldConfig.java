@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 /**
  */
 @Configuration
-public class MongoTemplateListener implements ApplicationListener<ContextRefreshedEvent> {
+public class MongoTemplateClassFieldConfig implements ApplicationListener<ContextRefreshedEvent> {
 
     @Resource
     private MongoTemplate mongoTemplate;

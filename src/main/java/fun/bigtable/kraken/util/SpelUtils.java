@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * spel 处理工具类
  *
  */
-public class SpelUtil {
+public class SpelUtils {
 
     public static String parse(String spel, Method method, Object[] args) {
         // 获取被拦截方法参数名列表(使用Spring支持类库)

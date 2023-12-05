@@ -10,13 +10,13 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class JsonUtil {
+public class JsonUtils {
 
     private static Gson gson;
 
     public static Gson getInstance() {
         if (Objects.isNull(gson)) {
-            synchronized (JsonUtil.class) {
+            synchronized (JsonUtils.class) {
                 if (Objects.isNull(gson)) {
                     GsonBuilder gsonBuilder = new GsonBuilder();
                     gsonBuilder.serializeNulls();

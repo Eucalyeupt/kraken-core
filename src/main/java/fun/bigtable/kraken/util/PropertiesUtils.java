@@ -12,11 +12,11 @@ import java.util.Properties;
 /**
  *
  */
-public class PropertiesUtil {
+public class PropertiesUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesUtils.class);
 
-    private PropertiesUtil() {
+    private PropertiesUtils() {
     }
 
     public static Properties readProperties(String name) {
