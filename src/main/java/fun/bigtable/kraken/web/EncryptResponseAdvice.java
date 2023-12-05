@@ -4,7 +4,7 @@ import fun.bigtable.kraken.annotation.EncryptMethod;
 import fun.bigtable.kraken.bean.Result;
 import fun.bigtable.kraken.constant.SensitiveTypeEnum;
 import fun.bigtable.kraken.page.result.PageInfo;
-import fun.bigtable.kraken.util.DesensitiseUtil;
+import fun.bigtable.kraken.util.DesensitiseUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -134,11 +134,11 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
 
         switch (type){
             case MOBILE_PHONE:
-                return DesensitiseUtil.desensitizeMobile(value);
+                return DesensitiseUtils.desensitizeMobile(value);
             case EMAIL:
-                return DesensitiseUtil.desensitizeEmail(value);
+                return DesensitiseUtils.desensitizeEmail(value);
             default:
-                return DesensitiseUtil.maskLeft(value, value.length(), null);
+                return DesensitiseUtils.maskLeft(value, value.length(), null);
         }
 
     }

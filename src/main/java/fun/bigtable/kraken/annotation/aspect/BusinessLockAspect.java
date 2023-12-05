@@ -4,7 +4,7 @@ import fun.bigtable.kraken.annotation.BusinessLock;
 import fun.bigtable.kraken.exception.BusinessException;
 import fun.bigtable.kraken.exception.Type;
 import fun.bigtable.kraken.redis.RedisSimpleLock;
-import fun.bigtable.kraken.util.SpelUtil;
+import fun.bigtable.kraken.util.SpelUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -66,7 +66,7 @@ public class BusinessLockAspect {
         if (annotation != null) {
             spel = annotation.sPel();
         }
-        return SpelUtil.parse(target, spel, targetMethod, arguments);
+        return SpelUtils.parse(target, spel, targetMethod, arguments);
     }
 
     public String makeLockKey(String... keys) {

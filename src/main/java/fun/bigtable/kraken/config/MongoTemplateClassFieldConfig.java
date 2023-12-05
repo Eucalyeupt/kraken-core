@@ -1,5 +1,6 @@
 package fun.bigtable.kraken.config;
 
+import jakarta.annotation.Resource;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -8,12 +9,11 @@ import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
 
-import javax.annotation.Resource;
 
 /**
  */
 @Configuration
-public class MongoTemplateListener implements ApplicationListener<ContextRefreshedEvent> {
+public class MongoTemplateClassFieldConfig implements ApplicationListener<ContextRefreshedEvent> {
 
     @Resource
     private MongoTemplate mongoTemplate;

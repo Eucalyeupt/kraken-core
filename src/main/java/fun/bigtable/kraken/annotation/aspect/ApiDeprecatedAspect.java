@@ -20,11 +20,11 @@ public class ApiDeprecatedAspect {
 
     @Before(value="pointCut()")
     public void before(JoinPoint joinPoint) throws BusinessException {
-        ApiDeprecated apiDeprecated = ((MethodSignature)joinPoint.getSignature()).getMethod().getAnnotation(ApiDeprecated.class);
+        ApiDeprecated apiDeprecated = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(ApiDeprecated.class);
         String msg = apiDeprecated.msg();
-        if (StringUtils.isEmpty(msg)){
+        if (StringUtils.isEmpty(msg)) {
             msg = "该功能已暂停使用，请退出重新登录，或联系运营人员";
         }
-        throw new BusinessException(Type.FAIL_INFO,msg);
+        throw new BusinessException(Type.FAIL_INFO, msg);
     }
 }

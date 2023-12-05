@@ -17,6 +17,6 @@ public class GlobalDefaultExceptionHandler {
     public Result<Object> defaultExceptionHandler(BusinessException e) {
         log.error(e.getMessage(), e);
 
-        return Result.fail(e.getErrorType());
+        return Result.fail(e.getErrorType(), e.getMessage());
     }
 }
