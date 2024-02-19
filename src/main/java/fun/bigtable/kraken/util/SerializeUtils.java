@@ -16,9 +16,8 @@ public class SerializeUtils {
             byteArrayOutputStream = new ByteArrayOutputStream();
             objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(object);
-            byte[] bytes = byteArrayOutputStream.toByteArray();
-            return bytes;
-        } catch (Exception e) {
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception ignored) {
 
         }
         return null;
@@ -29,13 +28,13 @@ public class SerializeUtils {
             return null;
         }
 
-        ByteArrayInputStream byteArrayInputStream = null;
+        ByteArrayInputStream byteArrayInputStream;
         try {
             // 反序列化
             byteArrayInputStream = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(byteArrayInputStream);
             return ois.readObject();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         return null;

@@ -1,6 +1,7 @@
 package fun.bigtable.kraken.init.impl;
 
 import fun.bigtable.kraken.init.AbstractInitializer;
+import jakarta.annotation.Resource;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.impl.matchers.GroupMatcher;
@@ -9,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 
 /**
- * RequesBody请求处理
+ * RequestBody请求处理
  */
 @Component
 @ControllerAdvice(annotations = RestController.class)

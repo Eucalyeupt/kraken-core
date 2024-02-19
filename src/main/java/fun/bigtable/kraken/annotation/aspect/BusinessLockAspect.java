@@ -5,6 +5,7 @@ import fun.bigtable.kraken.exception.BusinessException;
 import fun.bigtable.kraken.exception.Type;
 import fun.bigtable.kraken.redis.RedisSimpleLock;
 import fun.bigtable.kraken.util.SpelUtils;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -16,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 

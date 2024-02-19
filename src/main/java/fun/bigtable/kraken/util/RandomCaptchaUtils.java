@@ -18,11 +18,13 @@ import java.util.Random;
 public class RandomCaptchaUtils {
     private static int imageWidth;
     private static int imageHeight;
-    private static Random random = new Random();
+    private static final Random random = new Random();
     private static final char[] NUMBERS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private static final char[] LETTERS = {'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'P', 'A', 'S', 'D', 'F', 'G', 'H',
             'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'p', 'a', 's',
             'd', 'f', 'g', 'h', 'j', 'k', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+
+    private static final int num = 8;
 
     /**
      * 生成指定长度的数字验证码
@@ -80,8 +82,8 @@ public class RandomCaptchaUtils {
         graphics2D.setStroke(new BasicStroke(1.3f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
 
         // 设置干扰
-        drawLine(graphics2D, 8);
-        drawCircle(graphics2D, 6);
+        drawLine(graphics2D);
+        drawCircle(graphics2D);
 
         // 设置透明度
         AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f);
@@ -98,10 +100,9 @@ public class RandomCaptchaUtils {
      * 绘制随机干扰线
      *
      * @param graphics Graphics2D
-     * @param number   the number of lines
      */
-    private static void drawLine(Graphics2D graphics, int number) {
-        for (int i = 0; i < number; i++) {
+    private static void drawLine(Graphics2D graphics) {
+        for (int i = 0; i < RandomCaptchaUtils.num; i++) {
             graphics.setColor(randomColor(150, 250));
             int x1 = random.nextInt(imageWidth + 10);
             int y1 = random.nextInt(imageHeight + 10);
@@ -115,10 +116,9 @@ public class RandomCaptchaUtils {
      * 绘制随机干扰圆
      *
      * @param graphics Graphics2D
-     * @param number   the number of circles
      */
-    private static void drawCircle(Graphics2D graphics, int number) {
-        for (int i = 0; i < number; i++) {
+    private static void drawCircle(Graphics2D graphics) {
+        for (int i = 0; i < 6; i++) {
             graphics.setColor(randomColor(100, 240));
             graphics.drawOval(random.nextInt(imageWidth), random.nextInt(imageHeight),
                     random.nextInt(imageHeight), random.nextInt(imageHeight));

@@ -2,12 +2,13 @@ package fun.bigtable.kraken.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.expression.MethodBasedEvaluationContext;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.core.StandardReflectionParameterNameDiscoverer;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 /**
  * spel 处理工具类
@@ -17,14 +18,14 @@ public class SpelUtils {
 
     public static String parse(String spel, Method method, Object[] args) {
         // 获取被拦截方法参数名列表(使用Spring支持类库)
-        LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
+        StandardReflectionParameterNameDiscoverer u = new StandardReflectionParameterNameDiscoverer();
         String[] paraNameArr = u.getParameterNames(method);
         // 使用SPEL进行key的解析
         ExpressionParser parser = new SpelExpressionParser();
         // SPEL上下文
         StandardEvaluationContext context = new StandardEvaluationContext();
         // 把方法参数放入SPEL上下文中
-        for (int i = 0; i < paraNameArr.length; i++) {
+        for (int i = 0; i < Objects.requireNonNull(paraNameArr).length; i++) {
             context.setVariable(paraNameArr[i], args[i]);
         }
         return parser.parseExpression(spel).getValue(context, String.class);
@@ -44,14 +45,14 @@ public class SpelUtils {
             return StringUtils.EMPTY;
         }
         // 获取被拦截方法参数名列表(使用Spring支持类库)
-        LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
+        StandardReflectionParameterNameDiscoverer u = new StandardReflectionParameterNameDiscoverer();
         String[] paraNameArr = u.getParameterNames(method);
         // 使用SPEL进行key的解析
         ExpressionParser parser = new SpelExpressionParser();
         // SPEL上下文
         StandardEvaluationContext context = new MethodBasedEvaluationContext(rootObject, method, args, u);
         // 把方法参数放入SPEL上下文中
-        for (int i = 0; i < paraNameArr.length; i++) {
+        for (int i = 0; i < Objects.requireNonNull(paraNameArr).length; i++) {
             context.setVariable(paraNameArr[i], args[i]);
         }
         return parser.parseExpression(spel).getValue(context, String.class);

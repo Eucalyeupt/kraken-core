@@ -1,10 +1,10 @@
 package fun.bigtable.kraken.redis;
 
 import fun.bigtable.kraken.util.DateTimeUtils;
+import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
