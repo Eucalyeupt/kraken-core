@@ -2,10 +2,10 @@ package fun.bigtable.kraken.mp;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import fun.bigtable.kraken.session.IGetSession;
+import jakarta.annotation.Resource;
 import org.apache.ibatis.reflection.MetaObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ import java.util.Objects;
 @Component
 public class DefaultDBFieldHandler implements MetaObjectHandler {
 
-    @Autowired
+    @Resource
     IGetSession IGetSession;
 
     private static final Logger log = LoggerFactory.getLogger(DefaultDBFieldHandler.class);

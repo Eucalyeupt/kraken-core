@@ -4,10 +4,12 @@ import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@ConditionalOnClass(XxlJobSpringExecutor.class)
 @ConditionalOnProperty(prefix = "xxl.job" ,value = "open")
 @Configuration
 public class XxlJobConfig {
