@@ -20,7 +20,7 @@ public class Result<T> {
         }
     }
 
-    public Result() {
+    private Result() {
     }
 
     private Result(ResponseState responseState, String errCode, String errMsg) {

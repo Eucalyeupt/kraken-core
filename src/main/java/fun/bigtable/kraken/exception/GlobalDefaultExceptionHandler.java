@@ -13,8 +13,8 @@ public class GlobalDefaultExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalDefaultExceptionHandler.class);
 
     @ResponseBody
-    @ExceptionHandler(value = BusinessException.class)
-    public Result<Object> defaultExceptionHandler(BusinessException e) {
+    @ExceptionHandler(value = IException.class)
+    public Result<Object> defaultExceptionHandler(IException e) {
         log.error(e.getMessage(), e);
 
         return Result.fail(e.getErrorType(), e.getMessage());

@@ -1,7 +1,7 @@
 package fun.bigtable.kraken.exception;
 
 
-public class BusinessException extends RuntimeException {
+public class BusinessException extends IException {
     private static final long serialVersionUID = 1L;
     private final Type type;
     private String errCode;
@@ -38,10 +38,12 @@ public class BusinessException extends RuntimeException {
         return super.toString() + "<" + getErrorType().getErrorCode() + ">";
     }
 
+    @Override
     public Type getErrorType() {
         return type;
     }
 
+    @Override
     public String getErrCode() {
         return errCode;
     }

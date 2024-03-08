@@ -12,7 +12,6 @@ import java.util.Objects;
  */
 public class BusinessAssert {
 
-
     /**
      * 表达式为真则抛出异常
      */
@@ -31,7 +30,7 @@ public class BusinessAssert {
     /**
      * 集合为空则抛出异常
      */
-    public static void ifCollectionEmpty(Collection collection, String errorMsg) throws BusinessException {
+    public static void ifCollectionEmpty(Collection<?> collection, String errorMsg) throws BusinessException {
         ifTrue(CollectionUtils.isEmpty(collection), errorMsg);
     }
 
@@ -53,7 +52,7 @@ public class BusinessAssert {
         ifTrue(ObjectUtils.isEmpty(object), errorMsg);
     }
 
-    public static void collectionSizeGtOne(Collection collection, String errorMsg) throws BusinessException {
+    public static void collectionSizeGtOne(Collection<?> collection, String errorMsg) throws BusinessException {
         ifTrue(collection.size() > 1, errorMsg);
     }
 
