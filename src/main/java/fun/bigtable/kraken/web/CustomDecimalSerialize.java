@@ -13,7 +13,7 @@ public class CustomDecimalSerialize extends JsonSerializer<BigDecimal> {
 
     @Override
     public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers)
-            throws IOException, JsonProcessingException {
+            throws IOException {
         if (value != null) {
             value = value.setScale(2, RoundingMode.HALF_UP);
             gen.writeString(value.toString());

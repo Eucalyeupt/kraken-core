@@ -10,6 +10,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * 基于Gson的json工具类
+ */
 public class JsonUtils {
 
     private static Gson gson;
@@ -20,7 +23,7 @@ public class JsonUtils {
                 if (Objects.isNull(gson)) {
                     GsonBuilder gsonBuilder = new GsonBuilder();
                     gsonBuilder.serializeNulls();
-                    gsonBuilder.registerTypeAdapter(LocalDateTime.class,new LocalDateAdapter());
+                    gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateAdapter());
                     gson = gsonBuilder.create();
                 }
             }
@@ -47,11 +50,11 @@ public class JsonUtils {
     /**
      * 自定义
      */
-    public static <T> T parserCustom(String json, TypeToken<T> typeToken){
+    public static <T> T parserCustom(String json, TypeToken<T> typeToken) {
         return getInstance().fromJson(json, typeToken.getType());
     }
 
-    public static class LocalDateAdapter implements JsonSerializer<LocalDateTime>,JsonDeserializer<LocalDateTime> {
+    public static class LocalDateAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
         @Override
         public JsonElement serialize(LocalDateTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
             return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -60,9 +63,9 @@ public class JsonUtils {
         @Override
         public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 
-            if(!json.isJsonNull()){
-                long asLong = json.getAsLong();
-                return LocalDateTime.ofInstant(Instant.ofEpochSecond(asLong), ZoneId.systemDefault());
+            if (!json.isJsonNull()) {
+                String asString = json.getAsString();
+                return DateTimeUtils.parserDateTime(asString);
             }
             return null;
         }

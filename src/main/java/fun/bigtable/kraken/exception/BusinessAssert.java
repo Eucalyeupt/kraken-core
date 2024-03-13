@@ -1,5 +1,6 @@
 package fun.bigtable.kraken.exception;
 
+import fun.bigtable.kraken.authority.IUserBelongCheck;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -79,7 +80,20 @@ public class BusinessAssert {
         }
     }
 
+    /**
+     * 校验必传参数
+     */
     public static void checkMustParam(Object... object) throws BusinessException {
         allNonNull("必要参数未传",object);
+    }
+
+    /**
+     * 数据越权检查
+     *
+     * @param belongId    归属用户id
+     * @param belongCheck 需要判断的数据，需要实现指定接口
+     */
+    public static void userDataCheck(Long belongId, IUserBelongCheck belongCheck) {
+        ifFalse(Objects.equals(belongCheck.getBelonging(), belongId),"数据越权");
     }
 }

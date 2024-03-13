@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.util.fence;
+package fun.bigtable.kraken.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

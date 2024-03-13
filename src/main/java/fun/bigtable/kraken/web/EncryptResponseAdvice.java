@@ -57,9 +57,8 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
 
         SensitiveTypeEnum type = method.type();
 
-        if (responseObj instanceof Result) {
+        if (responseObj instanceof Result<?> result) {
 
-            Result result = (Result) responseObj;
             Object body = result.getBody();
             dealWithBusinessBody(body, encryptFieldSet,type);
 

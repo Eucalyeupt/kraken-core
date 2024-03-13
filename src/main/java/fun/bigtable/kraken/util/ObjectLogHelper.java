@@ -40,8 +40,7 @@ import java.util.function.Function;
  *     }
  * }</pre>
  *
- * @author 刘乐法
- * @date 2024/1/30 16:34
+ * @author lefaliu
  */
 public class ObjectLogHelper<T> {
 

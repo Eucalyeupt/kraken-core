@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.util;
+package fun.bigtable.kraken.util.fence;
 
 import cn.hutool.http.HttpUtil;
 import com.google.gson.JsonArray;
@@ -6,13 +6,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import fun.bigtable.kraken.trace.ITrace;
 import fun.bigtable.kraken.trace.bean.DefaultTrace;
-import fun.bigtable.kraken.util.fence.FenceTypeEnum;
-import fun.bigtable.kraken.util.fence.GPSUtils;
-import fun.bigtable.kraken.util.fence.WarningRuleFence;
+import fun.bigtable.kraken.util.GPSUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 围栏工具
+ */
 public class FenceUtils {
 
     /**
@@ -77,7 +78,7 @@ public class FenceUtils {
      * @return 是否在围栏中
      */
     public static boolean checkInFence(ITrace position, WarningRuleFence warningRuleFence) {
-        switch (FenceTypeEnum.getTypeByCode(warningRuleFence.getFenceType())) {
+        switch (WarningRuleFence.FenceTypeEnum.getTypeByCode(warningRuleFence.getFenceType())) {
             case ROUND:
                 String[] split = warningRuleFence.getCenterPosition().split(",");
                 DefaultTrace center = new DefaultTrace();
