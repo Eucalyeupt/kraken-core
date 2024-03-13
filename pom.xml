@@ -182,6 +182,7 @@
                 <version>3.6.3</version>
                 <configuration>
                     <failOnError>false</failOnError>
+                    <additionalJOption>-Xdoclint:none</additionalJOption>
                 </configuration>
                 <executions>
                     <execution>
@@ -202,6 +203,9 @@
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
