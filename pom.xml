@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fun.bigtable</groupId>
     <artifactId>kraken-core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>kraken-core</name>
     <description>kraken-core</description>
     <url>http://bigtable.fun/</url>
@@ -103,6 +103,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -114,6 +115,12 @@
             <artifactId>xxl-job-core</artifactId>
             <version>2.3.1</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>cn.hutool</groupId>
+                    <artifactId>hutool-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
