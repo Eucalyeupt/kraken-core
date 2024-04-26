@@ -13,7 +13,7 @@ public class BeanUtils {
      * @param getter 来源bean的getter
      * @param setter 目标bean的setter
      */
-    public static <Value> void copy(Supplier<Value> getter, Consumer<Value> setter) {
+    public static <Value> void copyProperty(Supplier<Value> getter, Consumer<Value> setter) {
         Value apply = getter.get();
         setter.accept(apply);
     }
