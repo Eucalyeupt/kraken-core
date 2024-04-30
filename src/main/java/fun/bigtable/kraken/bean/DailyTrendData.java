@@ -1,9 +1,6 @@
 package fun.bigtable.kraken.bean;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;

@@ -82,8 +82,8 @@ public class RandomCaptchaUtils {
         graphics2D.setStroke(new BasicStroke(1.3f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
 
         // 设置干扰
-        drawLine(graphics2D);
-        drawCircle(graphics2D);
+        drawLine(graphics2D, 8);
+        drawCircle(graphics2D, 6);
 
         // 设置透明度
         AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f);
@@ -100,9 +100,10 @@ public class RandomCaptchaUtils {
      * 绘制随机干扰线
      *
      * @param graphics Graphics2D
+     * @param number   the number of lines
      */
-    private static void drawLine(Graphics2D graphics) {
-        for (int i = 0; i < RandomCaptchaUtils.num; i++) {
+    private static void drawLine(Graphics2D graphics, int number) {
+        for (int i = 0; i < number; i++) {
             graphics.setColor(randomColor(150, 250));
             int x1 = random.nextInt(imageWidth + 10);
             int y1 = random.nextInt(imageHeight + 10);
@@ -116,9 +117,10 @@ public class RandomCaptchaUtils {
      * 绘制随机干扰圆
      *
      * @param graphics Graphics2D
+     * @param number   the number of circles
      */
-    private static void drawCircle(Graphics2D graphics) {
-        for (int i = 0; i < 6; i++) {
+    private static void drawCircle(Graphics2D graphics, int number) {
+        for (int i = 0; i < number; i++) {
             graphics.setColor(randomColor(100, 240));
             graphics.drawOval(random.nextInt(imageWidth), random.nextInt(imageHeight),
                     random.nextInt(imageHeight), random.nextInt(imageHeight));

@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.annotation.aspect;
+package fun.bigtable.kraken.web.advice;
 
 import fun.bigtable.kraken.annotation.ApiDeprecated;
 import fun.bigtable.kraken.exception.BusinessException;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class ApiDeprecatedAspect {
+public class ApiDeprecatedAdvice {
 
     @Pointcut(value = "@annotation(fun.bigtable.kraken.annotation.ApiDeprecated)")
     public void pointCut(){}

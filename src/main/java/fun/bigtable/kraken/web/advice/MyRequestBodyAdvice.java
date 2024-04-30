@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.web;
+package fun.bigtable.kraken.web.advice;
 
 import fun.bigtable.kraken.annotation.EncryptController;
 import fun.bigtable.kraken.util.AESOperator;

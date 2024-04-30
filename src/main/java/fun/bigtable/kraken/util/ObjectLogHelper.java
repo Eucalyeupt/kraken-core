@@ -39,19 +39,17 @@ import java.util.function.Function;
  *         //【前缀一般是时间】【操作人】【修改】【主键】从[2]改为[1];【关闭时间】从[2014-01-01 00:00:00]改为[2024-01-30 22:22:59];【类型】从[司机预付]改为[油];【自定义字段】从[2prepay]改为[1oil];【后缀可不写】
  *     }
  * }</pre>
- *
- * @author lefaliu
  */
 public class ObjectLogHelper<T> {
 
     /**
      * 新对象
      */
-    private final T             newObj;
+    private final T newObj;
     /**
      * 旧对象
      */
-    private final T             oldObj;
+    private final T oldObj;
     /**
      * 存日志
      */
@@ -59,15 +57,15 @@ public class ObjectLogHelper<T> {
     /**
      * 日志前缀
      */
-    private       String        prefix;
+    private String prefix;
     /**
      * 日志操作人
      */
-    private       String        userName;
+    private String userName;
     /**
      * 日志后缀
      */
-    private       String        suffix;
+    private String suffix;
 
     //---------------------------------------------
 
@@ -84,7 +82,7 @@ public class ObjectLogHelper<T> {
         R newV = getter.apply(newObj);
 
         if (oldObj == null) {
-            logAppend.append(MyFormatUtils.format("【 {} 】[{}];",desc,objectToString(newV)));
+            logAppend.append(MyFormatUtils.format("【 {} 】[{}];", desc, objectToString(newV)));
         } else {
             R oldV = getter.apply(oldObj);
             if (!Objects.equals(newV, oldV)) {
@@ -93,7 +91,6 @@ public class ObjectLogHelper<T> {
         }
         return this;
     }
-
 
 
     /**
@@ -153,13 +150,13 @@ public class ObjectLogHelper<T> {
         return this;
     }
 
-    public static <T> ObjectLogHelper<T> of(T newObj, T oldObj){
+    public static <T> ObjectLogHelper<T> of(T newObj, T oldObj) {
         return new ObjectLogHelper<>(newObj, oldObj);
     }
 
     private ObjectLogHelper(T newObj, T oldObj) {
-        this.newObj    = newObj;
-        this.oldObj    = oldObj;
+        this.newObj = newObj;
+        this.oldObj = oldObj;
         this.logAppend = new StringBuilder();
     }
 

@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.web;
+package fun.bigtable.kraken.web.advice;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

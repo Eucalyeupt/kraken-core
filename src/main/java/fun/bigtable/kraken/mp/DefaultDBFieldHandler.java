@@ -15,8 +15,6 @@ import java.util.Objects;
 
 /**
  * 填充创建时间 创建人等
- *
- * @author lefaliu
  */
 
 @ConditionalOnClass(MetaObjectHandler.class)
