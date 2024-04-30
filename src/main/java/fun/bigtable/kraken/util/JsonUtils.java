@@ -10,6 +10,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * 基于Gson的json工具类
+ */
 public class JsonUtils {
 
     private static Gson gson;
@@ -60,9 +63,9 @@ public class JsonUtils {
         @Override
         public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 
-            if(!json.isJsonNull()){
-                long asLong = json.getAsLong();
-                return LocalDateTime.ofInstant(Instant.ofEpochSecond(asLong), ZoneId.systemDefault());
+            if (!json.isJsonNull()) {
+                String asString = json.getAsString();
+                return DateTimeUtils.parserDateTime(asString);
             }
             return null;
         }

@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.util.fence;
+package fun.bigtable.kraken.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,6 +10,7 @@ public class GPSUtils {
     public static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     public static double a = 6378245.0;
     public static double ee = 0.00669342162296594323;
+    private static final double EARTH_RADIUS = 6371.393;
 
     private static double rad(double d)
     {
@@ -26,7 +27,6 @@ public class GPSUtils {
         double b = rad(lng1) - rad(lng2);
         double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
                 Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
-        double EARTH_RADIUS = 6371.393;
         s = s * EARTH_RADIUS;
         s = Math.round(s * 1000);
         return s;

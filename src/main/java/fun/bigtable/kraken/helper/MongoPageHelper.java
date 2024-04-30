@@ -3,6 +3,7 @@ package fun.bigtable.kraken.helper;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 /**
  */
+@ConditionalOnBean(MongoTemplate.class)
 @Component
 public class MongoPageHelper {
 

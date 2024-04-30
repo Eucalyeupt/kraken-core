@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.note;
+package fun.bigtable.kraken.annotation.note;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

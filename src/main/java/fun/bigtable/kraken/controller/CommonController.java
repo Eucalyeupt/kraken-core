@@ -1,6 +1,5 @@
 package fun.bigtable.kraken.controller;
 
-import fun.bigtable.kraken.annotation.ApiDeprecated;
 import fun.bigtable.kraken.bean.Result;
 import fun.bigtable.kraken.dict.DictCache;
 import fun.bigtable.kraken.dict.DictInitializer;

@@ -1,6 +1,6 @@
 package fun.bigtable.kraken.annotation.enable;
 
-import fun.bigtable.kraken.web.ApiDeprecatedAdvice;
+import fun.bigtable.kraken.web.advice.ApiDeprecatedAdvice;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

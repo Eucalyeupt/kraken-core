@@ -1,10 +1,11 @@
 package fun.bigtable.kraken.util.fence;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import fun.bigtable.kraken.note.RequestField;
-import fun.bigtable.kraken.note.ResponseField;
+import fun.bigtable.kraken.annotation.note.RequestField;
+import fun.bigtable.kraken.annotation.note.ResponseField;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 public class WarningRuleFence  {
@@ -253,5 +254,80 @@ public class WarningRuleFence  {
 
     public String getAreaCode() {
         return this.areaCode;
+    }
+
+    public enum FenceAlarmTypeEnum {
+        GET_IN(1, "入围栏告警", "fence_in"),
+        GET_OUT(2, "出围栏告警", "fence_out"),
+        GET_THROUGH(3, "出入围栏告警", "fence_through"),
+        ERROR(0, "错误类型", "error");
+
+        private final int code;
+
+        private final String name;
+
+        private final String type;
+
+        public static FenceAlarmTypeEnum getByCode(int code) {
+            for (FenceAlarmTypeEnum value : FenceAlarmTypeEnum.values()) {
+                if (Objects.equals(code, value.code)) {
+                    return value;
+                }
+            }
+            return ERROR;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        FenceAlarmTypeEnum(int code, String name, String type) {
+            this.code = code;
+            this.name = name;
+            this.type = type;
+        }
+    }
+
+    public enum FenceTypeEnum {
+
+        ROUND(1,"圆形围栏"),
+        CUSTOM(2,"多边形围栏"),
+        AREA(3,"区域围栏"),
+        ERROR(4,"错误的类型");
+
+        private final int code;
+
+        private final String name;
+
+        public static FenceTypeEnum getTypeByCode(int code){
+            for (FenceTypeEnum value : FenceTypeEnum.values()) {
+                if(Objects.equals(code,value.code)){
+                    return value;
+                }
+            }
+            return ERROR;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        FenceTypeEnum(int code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+
     }
 }

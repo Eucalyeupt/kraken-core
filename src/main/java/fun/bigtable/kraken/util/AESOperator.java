@@ -19,7 +19,7 @@ public class AESOperator {
      */
     private static final String KEY = PROPERTIES.getProperty("aesKey");
     private static final  String VECTOR = PROPERTIES.getProperty("aesVector");
-    private static AESOperator instance = null;
+    private static final AESOperator instance = null;
 
     private AESOperator() {
 

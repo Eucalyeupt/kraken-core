@@ -18,11 +18,13 @@ import java.util.Random;
 public class RandomCaptchaUtils {
     private static int imageWidth;
     private static int imageHeight;
-    private static Random random = new Random();
+    private static final Random random = new Random();
     private static final char[] NUMBERS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private static final char[] LETTERS = {'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'P', 'A', 'S', 'D', 'F', 'G', 'H',
             'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'p', 'a', 's',
             'd', 'f', 'g', 'h', 'j', 'k', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+
+    private static final int num = 8;
 
     /**
      * 生成指定长度的数字验证码

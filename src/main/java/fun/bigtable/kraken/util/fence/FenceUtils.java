@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.util;
+package fun.bigtable.kraken.util.fence;
 
 import cn.hutool.http.HttpUtil;
 import com.google.gson.JsonArray;
@@ -6,9 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import fun.bigtable.kraken.trace.ITrace;
 import fun.bigtable.kraken.trace.bean.DefaultTrace;
-import fun.bigtable.kraken.util.fence.FenceTypeEnum;
-import fun.bigtable.kraken.util.fence.GPSUtils;
-import fun.bigtable.kraken.util.fence.WarningRuleFence;
+import fun.bigtable.kraken.util.GPSUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,7 @@ public class FenceUtils {
      * @param poly 多边形顶点，
      * @return 点 p 和多边形 poly 的几何关系，是否在多边形内部
      */
-    public static boolean windingNumber(ITrace p, List<ITrace> poly) {
+    public static boolean windingNumber(ITrace p, List<? extends ITrace> poly) {
         double px = Double.parseDouble(p.getLon());
         double py = Double.parseDouble(p.getLat());
         double sum = 0;
@@ -77,7 +75,7 @@ public class FenceUtils {
      * @return 是否在围栏中
      */
     public static boolean checkInFence(ITrace position, WarningRuleFence warningRuleFence) {
-        switch (FenceTypeEnum.getTypeByCode(warningRuleFence.getFenceType())) {
+        switch (WarningRuleFence.FenceTypeEnum.getTypeByCode(warningRuleFence.getFenceType())) {
             case ROUND:
                 String[] split = warningRuleFence.getCenterPosition().split(",");
                 DefaultTrace center = new DefaultTrace();
@@ -85,8 +83,7 @@ public class FenceUtils {
                 center.setLon(split[0]);
                 return FenceUtils.circleFence(center, position, warningRuleFence.getRadius());
             case CUSTOM:
-                JsonParser parser = new JsonParser();
-                JsonArray jsonArray = parser.parse(warningRuleFence.getFenceBorder()).getAsJsonObject().getAsJsonArray("position");
+                JsonArray jsonArray = JsonParser.parseString(warningRuleFence.getFenceBorder()).getAsJsonObject().getAsJsonArray("position");
 
                 List<ITrace> poly = new ArrayList<>();
 
@@ -96,9 +93,8 @@ public class FenceUtils {
 
                 return FenceUtils.windingNumber(position, poly);
             case AREA:
-                parser = new JsonParser();
                 String areaStr = HttpUtil.get("https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=" + warningRuleFence.getAreaCode());
-                jsonArray = parser.parse(areaStr).getAsJsonObject().getAsJsonArray("features").get(0).getAsJsonObject().getAsJsonObject("geometry").getAsJsonArray("coordinates").get(0).getAsJsonArray().get(0).getAsJsonArray();
+                jsonArray = JsonParser.parseString(areaStr).getAsJsonObject().getAsJsonArray("features").get(0).getAsJsonObject().getAsJsonObject("geometry").getAsJsonArray("coordinates").get(0).getAsJsonArray().get(0).getAsJsonArray();
 
                 poly = new ArrayList<>();
 

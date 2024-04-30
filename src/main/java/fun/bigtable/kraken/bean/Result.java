@@ -2,8 +2,6 @@ package fun.bigtable.kraken.bean;
 
 import fun.bigtable.kraken.constant.ResponseState;
 import fun.bigtable.kraken.exception.Type;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +13,6 @@ public class Result<T> {
     private String errMsg;
     private List<ApiPrivacy> privacy;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Result.class);
-
     private Result(ResponseState responseState, T object) {
         this.state = responseState.getState();
         if (object != null) {
@@ -24,7 +20,7 @@ public class Result<T> {
         }
     }
 
-    public Result() {
+    private Result() {
     }
 
     private Result(ResponseState responseState, String errCode, String errMsg) {
