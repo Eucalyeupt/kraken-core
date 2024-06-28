@@ -18,7 +18,7 @@ import java.util.Objects;
  */
 
 @ConditionalOnClass(MetaObjectHandler.class)
-@ConditionalOnBean
+@ConditionalOnBean(IGetSession.class)
 @Component
 public class DefaultDBFieldHandler implements MetaObjectHandler {
 
