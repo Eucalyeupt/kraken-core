@@ -24,8 +24,6 @@
 
 package fun.bigtable.kraken.page.result;
 
-import fun.bigtable.kraken.bean.ApiPrivacy;
-
 import java.util.List;
 
 /**
@@ -39,8 +37,6 @@ public class PageInfo<T>{
     private int pages;
     //结果集
     private List<T> list;
-    //加密
-    private List<ApiPrivacy> privacy;
 
     public PageInfo() {
     }
@@ -87,11 +83,4 @@ public class PageInfo<T>{
         this.list = list;
     }
 
-    public List<ApiPrivacy> getPrivacy() {
-        return privacy;
-    }
-
-    public void setPrivacy(List<ApiPrivacy> privacy) {
-        this.privacy = privacy;
-    }
 }

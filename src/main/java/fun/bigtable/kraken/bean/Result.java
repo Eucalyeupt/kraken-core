@@ -1,20 +1,15 @@
 package fun.bigtable.kraken.bean;
 
-import fun.bigtable.kraken.constant.ResponseState;
 import fun.bigtable.kraken.exception.Type;
 
-import java.util.List;
 import java.util.Optional;
 
 public class Result<T> {
     private T body;
-    private String state;
-    private String errCode;
+    private int code;
     private String errMsg;
-    private List<ApiPrivacy> privacy;
 
-    private Result(ResponseState responseState, T object) {
-        this.state = responseState.getState();
+    private Result(T object) {
         if (object != null) {
             this.body = object;
         }
@@ -23,18 +18,17 @@ public class Result<T> {
     private Result() {
     }
 
-    private Result(ResponseState responseState, String errCode, String errMsg) {
-        this.state = responseState.getState();
-        if (errCode != null) {
-            this.errCode = errCode;
+    private Result(Integer code, String errMsg) {
+        if (code != null) {
+            this.code = code;
         }
         if (errMsg != null) {
             this.errMsg = errMsg;
         }
     }
 
-    public String getErrCode() {
-        return errCode;
+    public Integer getCode() {
+        return code;
     }
 
 
@@ -43,37 +37,23 @@ public class Result<T> {
     }
 
 
-    public String getState() {
-        return state;
-    }
-
-
     public String getErrMsg() {
         return errMsg;
     }
 
-
-    public List<ApiPrivacy> getPrivacy() {
-        return privacy;
-    }
-
-    public void setPrivacy(List<ApiPrivacy> privacy) {
-        this.privacy = privacy;
-    }
-
     public static <T> Result<T> success() {
-        return new Result<>(ResponseState.SUCCESS, null);
+        return new Result<>(null);
     }
 
     public static <T> Result<T> success(T object) {
-        return new Result<>(ResponseState.SUCCESS, object);
+        return new Result<>(object);
     }
 
     public static <T> Result<T> fail(Type type) {
-        return new Result<>(ResponseState.FAIL, type.getErrorCode(), type.getErrorCode());
+        return new Result<>(type.getErrorCode(), type.getDesc());
     }
 
     public static <T> Result<T> fail(Type type, String err) {
-        return new Result<>(ResponseState.FAIL, type.getErrorCode(), Optional.ofNullable(err).orElse(type.getDesc()));
+        return new Result<>(type.getErrorCode(), Optional.ofNullable(err).orElse(type.getDesc()));
     }
 }

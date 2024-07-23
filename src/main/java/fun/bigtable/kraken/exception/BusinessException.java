@@ -20,7 +20,7 @@ public class BusinessException extends IException {
 
     public BusinessException(String message) {
         super(message);
-        this.type = Type.DEFAULT_ERROR;
+        this.type = Type.FAIL_INFO;
     }
 
     public BusinessException(Type type, String message) {
@@ -48,8 +48,8 @@ public class BusinessException extends IException {
         return errCode;
     }
 
-    public static BusinessException newInstance(Type type) {
-        return new BusinessException(type);
+    public static BusinessException error(String msg) {
+        return new BusinessException(msg);
     }
 
 }

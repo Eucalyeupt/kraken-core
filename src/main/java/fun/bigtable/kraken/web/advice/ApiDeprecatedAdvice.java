@@ -25,6 +25,6 @@ public class ApiDeprecatedAdvice {
         if (StringUtils.isEmpty(msg)) {
             msg = "该功能已暂停使用，请退出重新登录，或联系运营人员";
         }
-        throw new BusinessException(Type.FAIL_INFO, msg);
+        throw BusinessException.error(msg);
     }
 }

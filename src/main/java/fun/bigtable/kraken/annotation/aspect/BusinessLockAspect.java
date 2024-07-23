@@ -39,7 +39,7 @@ public class BusinessLockAspect {
         long lockTime = businessLock.lockTime();
         if (!redisSimpleLock.lock(lockKey, lockTime)) {
             log.warn("Business Lock Failed, businessNo:{}", businessNo);
-            throw new BusinessException(Type.FAIL_INFO, "业务处理中，请稍后再试");
+            throw BusinessException.error( "业务处理中，请稍后再试");
         }
         try {
             return point.proceed();

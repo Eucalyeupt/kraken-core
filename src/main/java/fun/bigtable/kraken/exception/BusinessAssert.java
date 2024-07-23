@@ -18,13 +18,13 @@ public class BusinessAssert {
      */
     public static void ifTrue(boolean expression, String errorMsg) throws BusinessException {
         if (expression) {
-            throw new BusinessException(Type.FAIL_INFO, errorMsg);
+            throw BusinessException.error(errorMsg);
         }
     }
 
     public static void ifFalse(boolean expression, String errorMsg) throws BusinessException {
         if (!expression) {
-            throw new BusinessException(Type.FAIL_INFO, errorMsg);
+            throw BusinessException.error( errorMsg);
         }
     }
 
@@ -70,13 +70,13 @@ public class BusinessAssert {
      */
     public static void paramNotNull(Object param) throws BusinessException {
         if(Objects.isNull(param)){
-            throw new BusinessException(Type.PARA_NULL);
+            throw BusinessException.error("参数为空");
         }
     }
 
     public static void ifTrue(boolean expression, String errorMsg, Type errorType) throws BusinessException {
         if (expression) {
-            throw new BusinessException(errorType, errorMsg);
+            throw BusinessException.error(errorMsg);
         }
     }
 
