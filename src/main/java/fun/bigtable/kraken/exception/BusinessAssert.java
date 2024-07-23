@@ -96,4 +96,12 @@ public class BusinessAssert {
     public static void userDataCheck(Long belongId, IUserBelongCheck belongCheck) {
         ifFalse(Objects.equals(belongCheck.getBelonging(), belongId),"数据越权");
     }
+
+    /**
+     * 检查数据是否存在并返回
+     */
+    public static <T> T linkDataOpt(T data){
+        ifNull(data, "无关联数据");
+        return data;
+    }
 }
