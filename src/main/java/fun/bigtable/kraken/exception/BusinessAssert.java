@@ -104,4 +104,7 @@ public class BusinessAssert {
         ifNull(data, "无关联数据");
         return data;
     }
+
+    private BusinessAssert() {
+    }
 }
