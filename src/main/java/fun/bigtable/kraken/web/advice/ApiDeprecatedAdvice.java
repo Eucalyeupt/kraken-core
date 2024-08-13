@@ -2,7 +2,6 @@ package fun.bigtable.kraken.web.advice;
 
 import fun.bigtable.kraken.annotation.ApiDeprecated;
 import fun.bigtable.kraken.exception.BusinessException;
-import fun.bigtable.kraken.exception.Type;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

@@ -1,8 +1,6 @@
 package fun.bigtable.kraken.exception;
 
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Objects;
 
 /**

@@ -1,6 +1,5 @@
 package fun.bigtable.kraken.dict.config;
 
-import fun.bigtable.kraken.annotation.enable.DisableDataSource;
 import fun.bigtable.kraken.dict.DefaultDictRepository;
 import fun.bigtable.kraken.dict.DictRepository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

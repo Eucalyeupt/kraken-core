@@ -1,7 +1,5 @@
 package fun.bigtable.kraken.util.offset.bean;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -41,7 +39,7 @@ public abstract class AbstractConsume implements Comparable<AbstractConsume>{
     }
 
     @Override
-    public int compareTo(@NotNull AbstractConsume o) {
+    public int compareTo( AbstractConsume o) {
         return getSort().compareTo(o.getSort());
     }
 

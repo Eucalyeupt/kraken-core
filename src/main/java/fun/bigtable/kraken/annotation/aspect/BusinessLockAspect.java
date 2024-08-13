@@ -2,7 +2,6 @@ package fun.bigtable.kraken.annotation.aspect;
 
 import fun.bigtable.kraken.annotation.BusinessLock;
 import fun.bigtable.kraken.exception.BusinessException;
-import fun.bigtable.kraken.exception.Type;
 import fun.bigtable.kraken.redis.RedisSimpleLock;
 import fun.bigtable.kraken.util.SpelUtils;
 import jakarta.annotation.Resource;

@@ -1,7 +1,6 @@
 package fun.bigtable.kraken.consume.bean;
 
 import fun.bigtable.kraken.util.offset.bean.AbstractConsume;
-import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 
