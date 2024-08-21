@@ -12,11 +12,13 @@ import java.util.stream.Collectors;
 /**
  * 业务检查器
  */
-@Component
 public class ContextCheckHelper {
 
-    @Autowired
     List<IPreChecker<?, ?>> checkers;
+
+    public ContextCheckHelper(List<IPreChecker<?, ?>> checkers) {
+        this.checkers = checkers;
+    }
 
     private static final Logger log = LoggerFactory.getLogger(ContextCheckHelper.class);
 
@@ -36,7 +38,7 @@ public class ContextCheckHelper {
         }
 
         for (IPreChecker<C, D> preChecker : collect) {
-            preChecker.check(generate, iCheckBizData);
+            preChecker.exec(generate, iCheckBizData);
         }
 
     }
