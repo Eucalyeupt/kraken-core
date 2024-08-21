@@ -36,7 +36,7 @@ public class ContextCheckHelper {
         }
 
         for (IPreChecker<C, D> preChecker : collect) {
-            preChecker.check(generate, iCheckBizData);
+            preChecker.exec(generate, iCheckBizData);
         }
 
     }
