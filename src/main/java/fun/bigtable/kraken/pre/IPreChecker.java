@@ -25,9 +25,12 @@ public abstract class IPreChecker<T extends CheckContext, D extends ICheckBizDat
      * 检查，
      */
     public T exec(T content, D checkBiz) {
-        for (Object data : getMustCheck().stream().map(func -> func.apply(content)).collect(Collectors.toList())) {
-            BusinessAssert.ifNull(data, "上下文中缺少必要参数");
+
+        for (Function<T, Object> tObjectFunction : getMustCheck()) {
+            Object apply = tObjectFunction.apply(content);
+            BusinessAssert.ifNull(apply, "上下文中缺少必要参数");
         }
+
         return check(content, checkBiz);
     }
 
