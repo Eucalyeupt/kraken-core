@@ -14,6 +14,7 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -26,6 +27,7 @@ import java.util.Properties;
  * #sqlId;traceId
  */
 @Component
+@ConditionalOnClass(TLogContext.class)
 @Intercepts({
         @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
 })
