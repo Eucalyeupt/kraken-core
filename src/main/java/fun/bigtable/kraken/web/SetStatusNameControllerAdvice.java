@@ -1,7 +1,7 @@
 package fun.bigtable.kraken.web;
 
-import com.github.pagehelper.PageInfo;
-import com.mykj.common.response.ResponseBean;
+import fun.bigtable.kraken.bean.Result;
+import fun.bigtable.kraken.page.result.PageInfo;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -18,7 +18,7 @@ public class SetStatusNameControllerAdvice implements ResponseBodyAdvice<Object>
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return ResponseBean.class.isAssignableFrom(returnType.getParameterType()) ||
+        return Result.class.isAssignableFrom(returnType.getParameterType()) ||
                 PageInfo.class.isAssignableFrom(returnType.getParameterType()) ||
                 List.class.isAssignableFrom(returnType.getParameterType()) ||
                 SetStatusName.class.isAssignableFrom(returnType.getParameterType());
@@ -27,8 +27,8 @@ public class SetStatusNameControllerAdvice implements ResponseBodyAdvice<Object>
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
 
-        if (body instanceof ResponseBean) {
-            Object responseBeanBody = ((ResponseBean<?>) body).getBody();
+        if (body instanceof Result<?>) {
+            Object responseBeanBody = ((Result<?>) body).getBody();
             dealBody(responseBeanBody);
         } else {
             dealBody(body);
