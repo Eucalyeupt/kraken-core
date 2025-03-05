@@ -1,13 +1,15 @@
-package fun.bigtable.kraken.util.offset.util;
+package fun.bigtable.kraken.util.offset;
 
 
 import fun.bigtable.kraken.exception.BusinessAssert;
 import fun.bigtable.kraken.util.BeanUtils;
-import fun.bigtable.kraken.util.offset.bean.AbstractConsume;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * 核销工具类
+ */
 public class ConsumeOffsetUtils {
 
 
@@ -31,7 +33,7 @@ public class ConsumeOffsetUtils {
             BigDecimal add = start.add(consume.getRestCnt());
 
             // 小于，全部核销
-            if(add.compareTo(toConsume) < 0){
+            if (add.compareTo(toConsume) < 0) {
                 consume.setRestCnt(BigDecimal.ZERO);
                 consume.setConsumeState(AbstractConsume.ConsumeState.ALL_CONSUMED.getCode());
             }
@@ -49,7 +51,7 @@ public class ConsumeOffsetUtils {
             }
         }
 
-        BusinessAssert.ifFalse(toConsume.compareTo(start) == 0,"核销余量不足");
+        BusinessAssert.ifFalse(toConsume.compareTo(start) == 0, "核销余量不足");
 
         return copyList;
     }

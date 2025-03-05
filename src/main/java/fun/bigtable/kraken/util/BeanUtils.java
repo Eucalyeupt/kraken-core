@@ -14,6 +14,7 @@ public class BeanUtils {
 
     /**
      * 拷贝特定字段（浅拷贝）
+     *
      * @param getter 来源bean的getter
      * @param setter 目标bean的setter
      */
@@ -25,9 +26,10 @@ public class BeanUtils {
     /**
      * 使用json深拷贝List
      */
-    public static <T> List<T> copyListByJson(List<T> list){
+    public static <T> List<T> copyListByJson(List<T> list) {
         List<T> newList = new ArrayList<>();
 
-        return JsonUtils.parserCustom(JsonUtils.toJson(list), new TypeToken<List<T>>(){});
+        return JsonUtils.parserCustom(JsonUtils.toJson(list), new TypeToken<List<T>>() {
+        });
     }
 }

@@ -1,4 +1,4 @@
 /**
- * 异常判断相关
+ * 异常
  */
 package fun.bigtable.kraken.exception;

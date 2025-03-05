@@ -1,8 +1,7 @@
 package fun.bigtable.kraken.web.advice;
 
 import fun.bigtable.kraken.web.anno.IdlerController;
-import fun.bigtable.kraken.web.helper.AbsIdlerBodyGenerate;
-import org.springframework.beans.factory.annotation.Autowired;
+import fun.bigtable.kraken.web.wrapper.AbsIdlerBodyWrapper;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -17,8 +16,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 @RestControllerAdvice(annotations = IdlerController.class)
 public class IdlerControllerAdvice implements ResponseBodyAdvice<Object> {
 
-    @Autowired
-    AbsIdlerBodyGenerate bodyGenerate;
+    AbsIdlerBodyWrapper bodyGenerate;
+
+    public IdlerControllerAdvice(AbsIdlerBodyWrapper bodyGenerate) {
+        this.bodyGenerate = bodyGenerate;
+    }
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {

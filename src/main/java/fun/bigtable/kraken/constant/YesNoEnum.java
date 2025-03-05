@@ -13,8 +13,8 @@ public enum YesNoEnum {
 
     YES(1, "是");
 
-    private Integer code;
-    private String desc;
+    private final Integer code;
+    private final String desc;
 
     YesNoEnum(Integer code, String desc) {
         this.code = code;

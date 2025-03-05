@@ -8,14 +8,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+/**
+ * 错误页处理
+ */
 @RestControllerAdvice
 @ResponseBody
 public class ErrorPageAdvice {
 
-
+    /**
+     * 404错误
+     */
     @ExceptionHandler(NoHandlerFoundException.class)
-    public Result<Boolean> result(){
-        return Result.fail(Type.FAIL_INFO,"url not found");
+    public Result<Boolean> result() {
+        return Result.fail(Type.FAIL_INFO, "url not found");
     }
 
 }

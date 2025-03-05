@@ -31,12 +31,19 @@ public class APPTrace implements ITrace {
 
     @Override
     public String getUtc() {
-        return Optional.of(locationTime).map(DateTimeUtils::formDateToLocalDateTime).map(DateTimeUtils::formateDate).orElse(null);
+        return Optional.of(locationTime).map(DateTimeUtils::formDateToLocalDateTime).map(DateTimeUtils::formatDate).orElse(null);
+    }
+
+    public void setLocationTime(Date locationTime) {
+        this.locationTime = locationTime;
+        if (locationTime != null) {
+            this.month = DateTimeFormatter.ofPattern("yyyyMM").format(DateTimeUtils.formDateToLocalDateTime(locationTime));
+        }
     }
 
     @Override
     public String getUnique() {
-        return phone;
+        return String.valueOf(id);
     }
 
     public String getVno() {
@@ -129,13 +136,6 @@ public class APPTrace implements ITrace {
 
     public Date getLocationTime() {
         return locationTime;
-    }
-
-    public void setLocationTime(Date locationTime) {
-        this.locationTime = locationTime;
-        if (locationTime != null) {
-            this.month = DateTimeFormatter.ofPattern("yyyyMM").format(DateTimeUtils.formDateToLocalDateTime(locationTime));
-        }
     }
 
     public Date getCreateTime() {

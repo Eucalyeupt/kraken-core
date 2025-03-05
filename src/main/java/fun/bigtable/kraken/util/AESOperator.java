@@ -9,6 +9,7 @@ import java.util.Base64;
 import java.util.Properties;
 
 /**
+ *
  */
 public class AESOperator {
 
@@ -18,13 +19,12 @@ public class AESOperator {
      * 加密用的Key 可以用26个字母和数字组成 此处使用AES-128-CBC加密模式，key需要为16位。
      */
     private static final String KEY = PROPERTIES.getProperty("aesKey");
-    private static final  String VECTOR = PROPERTIES.getProperty("aesVector");
+    private static final String VECTOR = PROPERTIES.getProperty("aesVector");
     private static final AESOperator instance = null;
 
     private AESOperator() {
 
     }
-
 
 
     /**
@@ -33,17 +33,18 @@ public class AESOperator {
     public static String encrypt(String content) throws Exception {
         return encrypt(content, KEY, VECTOR);
     }
+
     /**
      * 加密
      */
-    public static String encrypt(String content,String key) throws Exception {
+    public static String encrypt(String content, String key) throws Exception {
         return encrypt(content, key, VECTOR);
     }
 
     /**
      * 加密
      */
-    public  static String encrypt(String content, String key, String vector) throws Exception {
+    public static String encrypt(String content, String key, String vector) throws Exception {
         if (key == null) {
             return null;
         }
@@ -65,12 +66,14 @@ public class AESOperator {
     public static String decrypt(String content) throws Exception {
         return decrypt(content, KEY, VECTOR);
     }
+
     /**
      * 解密
      */
-    public static String decrypt(String content,String key) throws Exception {
+    public static String decrypt(String content, String key) throws Exception {
         return decrypt(content, key, VECTOR);
     }
+
     /**
      * 解密
      */

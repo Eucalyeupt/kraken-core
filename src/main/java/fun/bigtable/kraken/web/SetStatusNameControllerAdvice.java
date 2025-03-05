@@ -1,7 +1,7 @@
 package fun.bigtable.kraken.web;
 
 import fun.bigtable.kraken.bean.Result;
-import fun.bigtable.kraken.page.result.PageInfo;
+import fun.bigtable.kraken.page.result.PageResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -19,7 +19,7 @@ public class SetStatusNameControllerAdvice implements ResponseBodyAdvice<Object>
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return Result.class.isAssignableFrom(returnType.getParameterType()) ||
-                PageInfo.class.isAssignableFrom(returnType.getParameterType()) ||
+                PageResult.class.isAssignableFrom(returnType.getParameterType()) ||
                 List.class.isAssignableFrom(returnType.getParameterType()) ||
                 SetStatusName.class.isAssignableFrom(returnType.getParameterType());
     }
@@ -36,16 +36,16 @@ public class SetStatusNameControllerAdvice implements ResponseBodyAdvice<Object>
         return body;
     }
 
-    private void dealBody(Object responseBeanBody){
+    private void dealBody(Object responseBeanBody) {
 
-        if(Objects.isNull(responseBeanBody)){
+        if (Objects.isNull(responseBeanBody)) {
             return;
         }
 
-        if (responseBeanBody instanceof PageInfo) {
-            List list = ((PageInfo) responseBeanBody).getList();
+        if (responseBeanBody instanceof PageResult) {
+            List<?> list = ((PageResult<?>) responseBeanBody).getList();
 
-            if(Objects.isNull(list)){
+            if (Objects.isNull(list)) {
                 return;
             }
 
@@ -55,7 +55,7 @@ public class SetStatusNameControllerAdvice implements ResponseBodyAdvice<Object>
                 }
             }
         } else if (responseBeanBody instanceof List) {
-            for (Object o : (List) responseBeanBody) {
+            for (Object o : (List<?>) responseBeanBody) {
                 if (o instanceof SetStatusName) {
                     ((SetStatusName) o).setName();
                 }

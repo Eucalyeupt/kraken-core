@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 
 /**
  * 脱敏工具类
- *
  */
 public class DesensitiseUtils {
 
@@ -30,7 +29,7 @@ public class DesensitiseUtils {
         if (StringUtils.isBlank(mobile)) {
             return mobile;
         }
-        if(mobile.length() < 7){
+        if (mobile.length() < 7) {
             return mobile;
         }
         int end = mobile.length() - 4;
@@ -43,7 +42,7 @@ public class DesensitiseUtils {
      * @param mobiles 明文手机号
      * @return 脱敏结果，保留前3位后4位
      */
-    public static List<String> desensitizeMobileList(List<String>  mobiles) {
+    public static List<String> desensitizeMobileList(List<String> mobiles) {
         if (CollectionUtils.isEmpty(mobiles)) {
             return mobiles;
         }
@@ -76,7 +75,7 @@ public class DesensitiseUtils {
                 Matcher matcher = phonePattern.matcher(mobile);
                 return matcher.replaceAll(newPhoneNumber);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("加密失败--", e);
         }
         return mobile;
@@ -146,7 +145,7 @@ public class DesensitiseUtils {
         if (StringUtils.isBlank(idcard)) {
             return idcard;
         }
-        if(idcard.length() < 15){
+        if (idcard.length() < 15) {
             return idcard;
         }
         int end = idcard.length() - 4;
@@ -163,7 +162,7 @@ public class DesensitiseUtils {
         if (StringUtils.isBlank(name)) {
             return name;
         }
-        if(name.length() <= 2){
+        if (name.length() <= 2) {
             return maskRight(name, 1, null);
         }
         int end = name.length() - 1;
@@ -181,11 +180,11 @@ public class DesensitiseUtils {
             return companyName;
         }
         int sub = 2;
-        if(companyName.length() <= 6){
+        if (companyName.length() <= 6) {
             sub = 1;
         }
         int end = companyName.length() - sub;
-        if (end<sub){
+        if (end < sub) {
             end = sub;
         }
         return maskBetween(companyName, sub, end, null);
@@ -203,7 +202,7 @@ public class DesensitiseUtils {
             return idcard;
         }
         int end = idcard.length() - 4;
-        if (end < 4){
+        if (end < 4) {
             return idcard;
         }
         return maskBetween(idcard, 4, end, null);
@@ -233,7 +232,7 @@ public class DesensitiseUtils {
         if (StringUtils.isBlank(detailAddress)) {
             return detailAddress;
         }
-        if (detailAddress.length() <= 10){
+        if (detailAddress.length() <= 10) {
             return maskRetainLeft(detailAddress, 3, null);
         }
         return maskRetainLeft(detailAddress, 10, null);

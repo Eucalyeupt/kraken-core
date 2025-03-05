@@ -25,8 +25,8 @@ public class DailyTrendData implements Serializable {
 
     /**
      * 类型
-     * @see Type
      *
+     * @see Type
      */
     private Integer type;
 
@@ -47,7 +47,7 @@ public class DailyTrendData implements Serializable {
 
     public enum Type {
 
-        OTHER(-1, "未知",""),
+        OTHER(-1, "未知", ""),
 
         ;
         private final Integer code;

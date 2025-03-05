@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
+ * gps工具类
  */
 public class GPSUtils {
     public static double pi = 3.1415926535897932384626;
@@ -12,27 +13,26 @@ public class GPSUtils {
     public static double ee = 0.00669342162296594323;
     private static final double EARTH_RADIUS = 6371.393;
 
-    private static double rad(double d)
-    {
+    private static double rad(double d) {
         return d * Math.PI / 180.0;
     }
+
     /**
      * 计算两个经纬度之间的距离
      */
-    public static double GetDistance(double lat1, double lng1, double lat2, double lng2)
-    {
+    public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {
         double radLat1 = rad(lat1);
         double radLat2 = rad(lat2);
         double a = radLat1 - radLat2;
         double b = rad(lng1) - rad(lng2);
-        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
-                Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+                Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
         s = s * EARTH_RADIUS;
         s = Math.round(s * 1000);
         return s;
     }
 
-    public static BigDecimal GetKMDistance(double lat1, double lng1, double lat2, double lng2){
+    public static BigDecimal GetKMDistance(double lat1, double lng1, double lat2, double lng2) {
         return BigDecimal.valueOf(GetDistance(lat1, lng1, lat2, lng2)).divide(BigDecimal.valueOf(1000), 5, RoundingMode.HALF_UP);
     }
 
@@ -54,9 +54,10 @@ public class GPSUtils {
                 * pi)) * 2.0 / 3.0;
         return ret;
     }
+
     public static double[] transform(double lat, double lon) {
         if (outOfChina(lat, lon)) {
-            return new double[]{lat,lon};
+            return new double[]{lat, lon};
         }
         double dLat = transformLat(lon - 105.0, lat - 35.0);
         double dLon = transformLon(lon - 105.0, lat - 35.0);
@@ -68,19 +69,21 @@ public class GPSUtils {
         dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);
         double mgLat = lat + dLat;
         double mgLon = lon + dLon;
-        return new double[]{mgLat,mgLon};
+        return new double[]{mgLat, mgLon};
     }
+
     public static boolean outOfChina(double lat, double lon) {
         if (lon < 72.004 || lon > 137.8347)
             return true;
         return lat < 0.8293 || lat > 55.8271;
     }
+
     /**
      * 84 to 火星坐标系 (GCJ-02) World Geodetic System ==> Mars Geodetic System
      */
     public static double[] gps84_To_Gcj02(double lat, double lon) {
         if (outOfChina(lat, lon)) {
-            return new double[]{lat,lon};
+            return new double[]{lat, lon};
         }
         double dLat = transformLat(lon - 105.0, lat - 35.0);
         double dLon = transformLon(lon - 105.0, lat - 35.0);
@@ -97,13 +100,14 @@ public class GPSUtils {
 
     /**
      * * 火星坐标系 (GCJ-02) to 84 * * @param lon * @param lat * @return
-     * */
+     */
     public static double[] gcj02_To_Gps84(double lat, double lon) {
         double[] gps = transform(lat, lon);
         double lontitude = lon * 2 - gps[1];
         double latitude = lat * 2 - gps[0];
         return new double[]{latitude, lontitude};
     }
+
     /**
      * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
      */
@@ -112,7 +116,7 @@ public class GPSUtils {
         double theta = Math.atan2(lat, lon) + 0.000003 * Math.cos(lon * x_pi);
         double tempLon = z * Math.cos(theta) + 0.0065;
         double tempLat = z * Math.sin(theta) + 0.006;
-        return new double[]{tempLat,tempLon};
+        return new double[]{tempLat, tempLon};
     }
 
     /**
@@ -125,16 +129,18 @@ public class GPSUtils {
         double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
         double tempLon = z * Math.cos(theta);
         double tempLat = z * Math.sin(theta);
-        return new double[]{tempLat,tempLon};
+        return new double[]{tempLat, tempLon};
     }
 
-    /**将gps84转为bd09
+    /**
+     * 将gps84转为bd09
      */
-    public static double[] gps84_To_bd09(double lat,double lon){
-        double[] gcj02 = gps84_To_Gcj02(lat,lon);
-        return gcj02_To_Bd09(gcj02[0],gcj02[1]);
+    public static double[] gps84_To_bd09(double lat, double lon) {
+        double[] gcj02 = gps84_To_Gcj02(lat, lon);
+        return gcj02_To_Bd09(gcj02[0], gcj02[1]);
     }
-    public static double[] bd09_To_gps84(double lat,double lon){
+
+    public static double[] bd09_To_gps84(double lat, double lon) {
         double[] gcj02 = bd09_To_Gcj02(lat, lon);
         double[] gps84 = gcj02_To_Gps84(gcj02[0], gcj02[1]);
         //保留小数点后六位
@@ -143,10 +149,11 @@ public class GPSUtils {
         return gps84;
     }
 
-    /**保留小数点后六位
+    /**
+     * 保留小数点后六位
      */
-    private static double retain6(double num){
-        String result = String .format("%.6f", num);
+    private static double retain6(double num) {
+        String result = String.format("%.6f", num);
         return Double.parseDouble(result);
     }
 

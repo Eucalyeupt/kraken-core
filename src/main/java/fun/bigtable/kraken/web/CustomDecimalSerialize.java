@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * 自定义序列化BigDecimal
+ */
 public class CustomDecimalSerialize extends JsonSerializer<BigDecimal> {
 
     @Override

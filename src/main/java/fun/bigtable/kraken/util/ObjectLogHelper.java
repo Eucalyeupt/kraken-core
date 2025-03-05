@@ -181,11 +181,11 @@ public class ObjectLogHelper<T> {
         if (obj == null) {
             return Objects.toString(obj);
         } else if (obj instanceof Date) {
-            return DateTimeUtils.formateDate(DateTimeUtils.formDateToLocalDateTime((Date) obj));
+            return DateTimeUtils.formatDate(DateTimeUtils.formDateToLocalDateTime((Date) obj));
         } else if (obj instanceof LocalDateTime) {
-            return DateTimeUtils.formateDate((LocalDateTime) obj);
+            return DateTimeUtils.formatDate((LocalDateTime) obj);
         } else if (obj instanceof LocalDate) {
-            return DateTimeUtils.formateDate((LocalDate) obj);
+            return DateTimeUtils.formatDate((LocalDate) obj);
         } else if (obj instanceof BigDecimal) {
             return ((BigDecimal) obj).toPlainString();
         } else if (obj instanceof Boolean) {

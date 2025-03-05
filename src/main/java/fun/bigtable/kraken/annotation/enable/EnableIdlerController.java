@@ -1,8 +1,7 @@
 package fun.bigtable.kraken.annotation.enable;
 
-import fun.bigtable.kraken.exception.GlobalDefaultExceptionHandler;
 import fun.bigtable.kraken.web.advice.IdlerControllerAdvice;
-import fun.bigtable.kraken.web.helper.impl.ResultBodyGenerate;
+import fun.bigtable.kraken.web.wrapper.impl.ResultBodyWrapper;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.Documented;
@@ -11,9 +10,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * 启用懒狗controller
+ */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({IdlerControllerAdvice.class, ResultBodyGenerate.class})
+@Import({IdlerControllerAdvice.class, ResultBodyWrapper.class})
 public @interface EnableIdlerController {
 }

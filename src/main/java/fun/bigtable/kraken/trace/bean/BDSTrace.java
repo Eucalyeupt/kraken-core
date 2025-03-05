@@ -3,6 +3,7 @@ package fun.bigtable.kraken.trace.bean;
 import fun.bigtable.kraken.trace.ITrace;
 
 /**
+ *
  */
 public class BDSTrace implements ITrace {
     private String vno;
@@ -27,7 +28,7 @@ public class BDSTrace implements ITrace {
     private int stopMin;
     private String state;
 
-    private String des ;
+    private String des;
 
     public String getDes() {
         return des;
@@ -56,19 +57,19 @@ public class BDSTrace implements ITrace {
 
     public void setStopMin(int stopMin) {
         this.stopMin = stopMin;
-        if(stopMin<60){
-            this.stopTime = stopMin+"分钟";
+        if (stopMin < 60) {
+            this.stopTime = stopMin + "分钟";
 
         }
-        if(stopMin>=60&&stopMin<(24*60)){
-            this.stopTime = (stopMin/60)+"小时"+((stopMin%60)==0?"":((stopMin%60)+"分钟"));
+        if (stopMin >= 60 && stopMin < (24 * 60)) {
+            this.stopTime = (stopMin / 60) + "小时" + ((stopMin % 60) == 0 ? "" : ((stopMin % 60) + "分钟"));
         }
-        if(stopMin>=(24*60)){
-            this.stopTime = (stopMin/(24*60))+"天";
-            int hour = stopMin%(24*60);
-           if(hour>=60){
-                this.stopTime+=(hour/60)+"小时";
-           }
+        if (stopMin >= (24 * 60)) {
+            this.stopTime = (stopMin / (24 * 60)) + "天";
+            int hour = stopMin % (24 * 60);
+            if (hour >= 60) {
+                this.stopTime += (hour / 60) + "小时";
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 package fun.bigtable.kraken.consume.bean;
 
-import fun.bigtable.kraken.util.offset.bean.AbstractConsume;
+import fun.bigtable.kraken.util.offset.AbstractConsume;
 
 import java.math.BigDecimal;
 

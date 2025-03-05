@@ -38,7 +38,7 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice<Object> {
             encode = encryptController.res();
         }
         if (encode) {
-            log.info("对方法method :" + returnType.getMethod().getName() + "返回数据进行加密");
+            log.info("对方法method :{}返回数据进行加密", returnType.getMethod().getName());
             ObjectMapper objectMapper = new ObjectMapper();
             try {
                 String result = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(body);

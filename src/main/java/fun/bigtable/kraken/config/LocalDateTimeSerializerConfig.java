@@ -17,9 +17,15 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * LocalDateTime序列化反序列化
+ */
 @Configuration
 public class LocalDateTimeSerializerConfig {
 
+    /**
+     * 注入
+     */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         return builder -> {
@@ -36,13 +42,14 @@ public class LocalDateTimeSerializerConfig {
         public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException {
             if (value != null) {
-                gen.writeString(DateTimeUtils.formateDate(value));
+                gen.writeString(DateTimeUtils.formatDate(value));
             }
         }
     }
 
     /**
-     * 反序列化
+     * 反序列化，
+     * 按照毫秒或者字符串都可以
      */
     public static class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
         @Override

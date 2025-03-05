@@ -2,8 +2,9 @@ package fun.bigtable.kraken.page.param;
 
 
 /**
+ *
  */
-    public abstract class AbstractPage implements IPage {
+public abstract class AbstractPage implements IPage {
 
 
     public static final int DEFAULT_PAGESIZE = 10;

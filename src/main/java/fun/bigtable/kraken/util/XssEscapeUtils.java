@@ -25,14 +25,11 @@ public class XssEscapeUtils {
     }
 
 
-    public static String escape(String s)
-    {
+    public static String escape(String s) {
         StringBuilder sb = new StringBuilder(s.length() + 16);
-        for (int i = 0; i < s.length(); i++)
-        {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            switch (c)
-            {
+            switch (c) {
                 case '>':
                     sb.append('＞');// 全角大于号
                     break;
@@ -56,10 +53,9 @@ public class XssEscapeUtils {
         }
         return sb.toString();
     }
-    public static String stripXSS(String value)
-    {
-        if (value != null)
-        {
+
+    public static String stripXSS(String value) {
+        if (value != null) {
             for (Pattern pattern : patternList) {
                 pattern.matcher(value).replaceAll("");
             }
@@ -67,12 +63,10 @@ public class XssEscapeUtils {
         return value;
     }
 
-    public static boolean checkXSS(String value)
-    {
-        if (value != null)
-        {
+    public static boolean checkXSS(String value) {
+        if (value != null) {
             for (Pattern pattern : patternList) {
-                if(pattern.matcher(value).matches()) return true;
+                if (pattern.matcher(value).matches()) return true;
             }
         }
         return false;

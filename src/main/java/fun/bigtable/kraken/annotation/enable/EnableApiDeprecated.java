@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 
 /**
- * 开始启用接口切面
+ * 启用API弃用
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

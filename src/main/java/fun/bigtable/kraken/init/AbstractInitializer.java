@@ -4,7 +4,7 @@ public abstract class AbstractInitializer {
 
     protected abstract void init();
 
-    public String module(){
+    public String module() {
         return "模块";
     }
 

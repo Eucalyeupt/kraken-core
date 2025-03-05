@@ -41,7 +41,7 @@ public class DictInitializer extends AbstractInitializer {
             dictGroupSet.put(dict.getGroup(), dicMapGroup);
         }
         DictCache.setDictGroupSet(dictGroupSet);
-        log.info("++++++++++++++++++　　数据字典完成加载 共{}项　　+++++++++++++++++++++",dictGroupSet.size());
+        log.info("++++++++++++++++++　　数据字典完成加载 共{}项　　+++++++++++++++++++++", dictGroupSet.size());
     }
 
     public String module() {

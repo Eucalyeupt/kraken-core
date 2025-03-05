@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 
 /**
  * RequestBody请求处理
@@ -65,7 +66,7 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 
         public MyHttpInputMessage(HttpInputMessage inputMessage, int type) throws IOException {
             this.headers = inputMessage.getHeaders();
-            String body = IOUtils.toString(inputMessage.getBody(), "UTF-8");
+            String body = IOUtils.toString(inputMessage.getBody(), StandardCharsets.UTF_8);
             if (type == 1) {
                 try {
                     body = AESOperator.decrypt(body);

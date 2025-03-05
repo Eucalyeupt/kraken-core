@@ -5,6 +5,7 @@ import fun.bigtable.kraken.constant.YesNoEnum;
 import java.util.Objects;
 
 /**
+ *
  */
 public class ApiPrivacy {
     /**
@@ -17,6 +18,7 @@ public class ApiPrivacy {
     private String url;
     /**
      * 状态1开启 0.不开启
+     *
      * @see YesNoEnum
      */
     private Integer state;
@@ -52,7 +54,6 @@ public class ApiPrivacy {
      * 修改时间
      */
     private String updateTime;
-
 
 
     public Long getId() {
@@ -200,8 +201,7 @@ public class ApiPrivacy {
         CPPLDRIVER(27, "平台运力池司机"),
         CPPLORG(28, "平台运力池渠道"),
         SYSUSER(29, "满易企服——商户管理"),
-        ERROR(-1,"异常")
-        ;
+        ERROR(-1, "异常");
 
 
         private Integer code;
@@ -213,9 +213,9 @@ public class ApiPrivacy {
         }
 
 
-        public static Type getTypeByCode(int code){
+        public static Type getTypeByCode(int code) {
             for (Type value : Type.values()) {
-                if(Objects.equals(code,value.code)){
+                if (Objects.equals(code, value.code)) {
                     return value;
                 }
             }
@@ -241,8 +241,7 @@ public class ApiPrivacy {
         BANKCARD(5, "银行卡号"),
         ADDRESS(6, "地址"),
         PHONEPHONESTRING(7, "包含手机号"),
-        ERROR(-1,"异常")
-        ;
+        ERROR(-1, "异常");
 
 
         private Integer code;
@@ -254,9 +253,9 @@ public class ApiPrivacy {
         }
 
 
-        public static FieldType getFieldTypeByCode(int code){
+        public static FieldType getFieldTypeByCode(int code) {
             for (FieldType value : FieldType.values()) {
-                if(Objects.equals(code,value.code)){
+                if (Objects.equals(code, value.code)) {
                     return value;
                 }
             }

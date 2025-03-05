@@ -5,8 +5,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * 序列化工具类
+ */
 public class SerializeUtils {
 
+    /**
+     * 序列化
+     */
     public static byte[] serialize(Object object) {
 
         ObjectOutputStream objectOutputStream = null;
@@ -23,8 +29,11 @@ public class SerializeUtils {
         return null;
     }
 
+    /**
+     * 反序列化
+     */
     public static Object unSerialize(byte[] bytes) {
-        if (bytes==null) {
+        if (bytes == null) {
             return null;
         }
 

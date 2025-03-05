@@ -3,7 +3,7 @@ package fun.bigtable.kraken.web.advice;
 import fun.bigtable.kraken.annotation.EncryptMethod;
 import fun.bigtable.kraken.bean.Result;
 import fun.bigtable.kraken.constant.SensitiveTypeEnum;
-import fun.bigtable.kraken.page.result.PageInfo;
+import fun.bigtable.kraken.page.result.PageResult;
 import fun.bigtable.kraken.util.DesensitiseUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -24,10 +24,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * 加密响应体
+ */
 @ControllerAdvice
 public class EncryptResponseAdvice implements ResponseBodyAdvice {
 
     private static final Logger log = LoggerFactory.getLogger(EncryptResponseAdvice.class);
+
 
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
@@ -65,40 +69,39 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
         if (responseObj instanceof Result<?> result) {
 
             Object body = result.getBody();
-            dealWithBusinessBody(body, encryptFieldSet,type);
+            dealWithBusinessBody(body, encryptFieldSet, type);
 
-        }
-         else if (responseObj instanceof List) {
-            dealWithBusinessBody(responseObj, encryptFieldSet,type);
+        } else if (responseObj instanceof List) {
+            dealWithBusinessBody(responseObj, encryptFieldSet, type);
         }
     }
 
-    private void dealWithBusinessBody(Object body, Set<String> encryptFieldSet,SensitiveTypeEnum type) throws IllegalAccessException {
+    private void dealWithBusinessBody(Object body, Set<String> encryptFieldSet, SensitiveTypeEnum type) throws IllegalAccessException {
 
-        if(Objects.isNull(body)){
+        if (Objects.isNull(body)) {
             return;
         }
 
-        if (body instanceof PageInfo) {
-            PageInfo pageInfo = (PageInfo) body;
+        if (body instanceof PageResult) {
+            PageResult pageInfo = (PageResult) body;
             for (Object o : pageInfo.getList()) {
-                encryptObject(o, encryptFieldSet,type);
+                encryptObject(o, encryptFieldSet, type);
             }
         } else if (body instanceof List) {
             List pageInfo = (List) body;
             for (Object o : pageInfo) {
-                encryptObject(o, encryptFieldSet,type);
+                encryptObject(o, encryptFieldSet, type);
             }
         } else if (body instanceof Map) {
             Map bodyMap = (Map) body;
             if (bodyMap.containsKey("list") && CollectionUtils.isNotEmpty((List) bodyMap.get("list"))) {
                 for (Object o : (List) bodyMap.get("list")) {
-                    encryptObject(o, encryptFieldSet,type);
+                    encryptObject(o, encryptFieldSet, type);
                 }
             }
 
         } else {
-            encryptObject(body, encryptFieldSet,type);
+            encryptObject(body, encryptFieldSet, type);
         }
     }
 
@@ -124,7 +127,7 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
                     if (StringUtils.isEmpty(plaintextValue)) {
                         continue;
                     }
-                    String encryptValue = getEncryptResult(plaintextValue,type);
+                    String encryptValue = getEncryptResult(plaintextValue, type);
                     field.set(object, encryptValue);
                 }
             }
@@ -132,11 +135,11 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
     }
 
     private String getEncryptResult(String value, SensitiveTypeEnum type) {
-        if(StringUtils.isBlank(value)){
+        if (StringUtils.isBlank(value)) {
             return value;
         }
 
-        switch (type){
+        switch (type) {
             case MOBILE_PHONE:
                 return DesensitiseUtils.desensitizeMobile(value);
             case EMAIL:

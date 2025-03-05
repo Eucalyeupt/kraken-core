@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 基于JAVA8的DateTime工具，使用了JAVA8的新增工具
- *
  */
 public class DateTimeUtils {
 
@@ -60,7 +59,7 @@ public class DateTimeUtils {
      * @param date 日期
      * @return 日期字符串
      */
-    public static String formateDate(LocalDate date) {
+    public static String formatDate(LocalDate date) {
         // 创建JAVA8时间包的formatter
         DateTimeFormatter df = DateTimeFormatter.ofPattern(DEFAULT_DATE_PATTERN);
         return df.format(date);
@@ -72,7 +71,7 @@ public class DateTimeUtils {
      * @param dateTime 时间
      * @return 日期字符串
      */
-    public static String formateDate(LocalDateTime dateTime) {
+    public static String formatDate(LocalDateTime dateTime) {
         // 创建JAVA8时间包的formatter
         DateTimeFormatter df = DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_PATTERN);
         return df.format(dateTime);
@@ -94,22 +93,12 @@ public class DateTimeUtils {
     public static int getTimeDiffToNow(String beginTime, TimeUnit timeUnit) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime start = LocalDateTime.parse(beginTime, DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_PATTERN));
-        long timeDiff;
-
-        switch (timeUnit) {
-            case SECONDS:
-                timeDiff = Duration.between(start, now).toMillis() / 1000;
-                break;
-            case MINUTES:
-                timeDiff = Duration.between(start, now).toMinutes();
-                break;
-            case HOURS:
-                timeDiff = Duration.between(start, now).toHours();
-                break;
-            default:
-                timeDiff = 0;
-                break;
-        }
+        long timeDiff = switch (timeUnit) {
+            case SECONDS -> Duration.between(start, now).toMillis() / 1000;
+            case MINUTES -> Duration.between(start, now).toMinutes();
+            case HOURS -> Duration.between(start, now).toHours();
+            default -> 0;
+        };
 
         return Integer.parseInt(String.valueOf(timeDiff));
     }

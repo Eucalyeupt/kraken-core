@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 
 
-public class WarningRuleFence  {
+public class WarningRuleFence {
 
     /**
      * '业务无关自增主键'
@@ -41,6 +41,7 @@ public class WarningRuleFence  {
     private Boolean inUse;
     /**
      * '围栏类型'
+     *
      * @see FenceTypeEnum
      */
     private Integer fenceType;
@@ -72,11 +73,11 @@ public class WarningRuleFence  {
     private String updateUser;
 
     @RequestField
-    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date createTimeQueryStart;
 
     @RequestField
-    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date createTimeQueryEnd;
 
     @RequestField
@@ -298,18 +299,18 @@ public class WarningRuleFence  {
 
     public enum FenceTypeEnum {
 
-        ROUND(1,"圆形围栏"),
-        CUSTOM(2,"多边形围栏"),
-        AREA(3,"区域围栏"),
-        ERROR(4,"错误的类型");
+        ROUND(1, "圆形围栏"),
+        CUSTOM(2, "多边形围栏"),
+        AREA(3, "区域围栏"),
+        ERROR(4, "错误的类型");
 
         private final int code;
 
         private final String name;
 
-        public static FenceTypeEnum getTypeByCode(int code){
+        public static FenceTypeEnum getTypeByCode(int code) {
             for (FenceTypeEnum value : FenceTypeEnum.values()) {
-                if(Objects.equals(code,value.code)){
+                if (Objects.equals(code, value.code)) {
                     return value;
                 }
             }

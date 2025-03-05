@@ -7,6 +7,9 @@ import org.apache.logging.log4j.message.FormattedMessage;
  */
 public class MyFormatUtils {
 
+    /**
+     * 格式化字符串
+     */
     public static String format(String text, Object... args) {
         return new FormattedMessage(text, args).getFormattedMessage();
     }

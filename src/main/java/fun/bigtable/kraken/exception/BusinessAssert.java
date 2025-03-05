@@ -22,6 +22,9 @@ public class BusinessAssert {
         }
     }
 
+    /**
+     * 表达式为假则抛出异常
+     */
     public static void ifFalse(boolean expression, String errorMsg) throws BusinessException {
         if (!expression) {
             throw BusinessException.error( errorMsg);
@@ -53,6 +56,9 @@ public class BusinessAssert {
         ifTrue(ObjectUtils.isEmpty(object), errorMsg);
     }
 
+    /**
+     * 集合数据大于一个则抛出异常
+     */
     public static void collectionSizeGtOne(Collection<?> collection, String errorMsg) throws BusinessException {
         ifTrue(collection.size() > 1, errorMsg);
     }
@@ -71,12 +77,6 @@ public class BusinessAssert {
     public static void paramNotNull(Object param) throws BusinessException {
         if(Objects.isNull(param)){
             throw BusinessException.error("参数为空");
-        }
-    }
-
-    public static void ifTrue(boolean expression, String errorMsg, Type errorType) throws BusinessException {
-        if (expression) {
-            throw BusinessException.error(errorMsg);
         }
     }
 

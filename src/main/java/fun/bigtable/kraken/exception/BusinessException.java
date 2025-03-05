@@ -1,7 +1,12 @@
 package fun.bigtable.kraken.exception;
 
+import java.io.Serial;
 
+/**
+ * 业务一场
+ */
 public class BusinessException extends IException {
+    @Serial
     private static final long serialVersionUID = 1L;
     private final Type type;
     private String errCode;

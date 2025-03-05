@@ -13,7 +13,6 @@ import java.util.Random;
 /**
  * 验证码工具类,用于生成多种类型验证码
  * 字符集中去掉了O o I i l等容易混淆的字符
- *
  */
 public class RandomCaptchaUtils {
     private static int imageWidth;

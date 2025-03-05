@@ -11,7 +11,7 @@ public class DictConfig {
 
     @Bean
     @ConditionalOnMissingBean(DictRepository.class)
-    public DefaultDictRepository defaultDictRepository(){
+    public DefaultDictRepository defaultDictRepository() {
         return new DefaultDictRepository();
     }
 

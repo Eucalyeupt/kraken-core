@@ -11,7 +11,7 @@ public interface CodeAnnoUtils {
      *
      * @param desc 描述内容
      */
-    static void tagAndDoNothing(String desc){
+    static void tagAndDoNothing(String desc) {
 
     }
 

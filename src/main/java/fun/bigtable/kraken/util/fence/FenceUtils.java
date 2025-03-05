@@ -19,13 +19,12 @@ public class FenceUtils {
     /**
      * 回转数法判断点是否在多边形内部
      *
-     * @see  <a href="https://www.jianshu.com/p/852d7ad081b3">GEOJSON标准格式</a>
-     * @see <a href="http://datav.aliyun.com/tools/atlas/index.html#&lat=31.769817845138945&lng=104.29901249999999&zoom=4">dataV</a>
-     * @see <a href="https://blog.csdn.net/Form_/article/details/77855163">算法来源</a>
-     *
      * @param p    待判断的点
      * @param poly 多边形顶点，
      * @return 点 p 和多边形 poly 的几何关系，是否在多边形内部
+     * @see <a href="https://www.jianshu.com/p/852d7ad081b3">GEOJSON标准格式</a>
+     * @see <a href="http://datav.aliyun.com/tools/atlas/index.html#&lat=31.769817845138945&lng=104.29901249999999&zoom=4">dataV</a>
+     * @see <a href="https://blog.csdn.net/Form_/article/details/77855163">算法来源</a>
      */
     public static boolean windingNumber(ITrace p, List<? extends ITrace> poly) {
         double px = Double.parseDouble(p.getLon());
@@ -68,12 +67,12 @@ public class FenceUtils {
      */
     public static boolean circleFence(ITrace center, ITrace p, int radius) {
         return GPSUtils.GetDistance(Double.parseDouble(center.getLat()), Double.parseDouble(center.getLon()), Double.parseDouble(p.getLat()), Double.parseDouble(p.getLon())) < radius;
-
     }
 
     /**
      * 位置点是否在围栏中
-     * @param position 位置点
+     *
+     * @param position         位置点
      * @param warningRuleFence 围栏配置
      * @return 是否在围栏中
      */

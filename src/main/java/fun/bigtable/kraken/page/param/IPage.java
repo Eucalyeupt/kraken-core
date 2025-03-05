@@ -7,6 +7,7 @@ public interface IPage {
     void setCountOnly(boolean countOnly);
 
     boolean isNeedCount();
+
     void setNeedCount(boolean needCount);
 
     int getPageNum();

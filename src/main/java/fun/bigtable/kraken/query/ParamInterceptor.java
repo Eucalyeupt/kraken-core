@@ -42,19 +42,19 @@ public class ParamInterceptor implements Interceptor {
             StatementHandler delegate = (StatementHandler) invocation.getTarget();
             MetaObject metaObject = SystemMetaObject.forObject(delegate);
             String sqlCommandType = Optional.ofNullable(SystemMetaObject.forObject(metaObject.getValue("delegate")).getValue("mappedStatement.sqlCommandType")).orElse(new Object()).toString();
-            if(StringUtils.equals(sqlCommandType, "SELECT")){
+            if (StringUtils.equals(sqlCommandType, "SELECT")) {
                 String sqlId = Optional.ofNullable(SystemMetaObject.forObject(metaObject.getValue("delegate")).getValue("mappedStatement.id")).orElse(new Object()).toString();
                 BoundSql boundSql = delegate.getBoundSql();
                 String changeSql = "#sqlId:" + sqlId;
                 final String traceId = TLogContext.getTraceId();
-                if(!StringUtils.isEmpty(traceId)){
+                if (!StringUtils.isEmpty(traceId)) {
                     changeSql = changeSql + "; traceId:" + traceId;
                 }
                 changeSql = changeSql + "; " + "\r\n" + boundSql.getSql();
                 metaObject.setValue("boundSql.sql", changeSql);
             }
-        } catch (BusinessException e){
-            throw  e;
+        } catch (BusinessException e) {
+            throw e;
         } catch (Exception e) {
             logger.error("ParamInterceptor Exception", e);
         }

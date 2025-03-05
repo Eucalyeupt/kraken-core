@@ -16,7 +16,6 @@ import java.util.Objects;
 /**
  * 填充创建时间 创建人等
  */
-
 @ConditionalOnClass(MetaObjectHandler.class)
 @ConditionalOnBean(IGetSession.class)
 @Component
@@ -60,7 +59,7 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
             Object modifier = getFieldValByName("updateId", metaObject);
             long loginUser = 0L;
             try {
-                loginUser =  IGetSession.getUserId();
+                loginUser = IGetSession.getUserId();
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
             }

@@ -10,14 +10,24 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
+/**
+ * 废弃接口通知
+ */
 @Aspect
 @Component
 public class ApiDeprecatedAdvice {
 
+    /**
+     * 切点
+     */
     @Pointcut(value = "@annotation(fun.bigtable.kraken.annotation.ApiDeprecated)")
-    public void pointCut(){}
+    public void pointCut() {
+    }
 
-    @Before(value="pointCut()")
+    /**
+     * 通知
+     */
+    @Before(value = "pointCut()")
     public void before(JoinPoint joinPoint) throws BusinessException {
         ApiDeprecated apiDeprecated = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(ApiDeprecated.class);
         String msg = apiDeprecated.msg();

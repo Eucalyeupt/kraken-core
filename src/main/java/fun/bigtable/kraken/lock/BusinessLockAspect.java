@@ -1,8 +1,7 @@
-package fun.bigtable.kraken.annotation.aspect;
+package fun.bigtable.kraken.lock;
 
 import fun.bigtable.kraken.annotation.BusinessLock;
 import fun.bigtable.kraken.exception.BusinessException;
-import fun.bigtable.kraken.redis.RedisSimpleLock;
 import fun.bigtable.kraken.util.SpelUtils;
 import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +24,8 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class BusinessLockAspect {
+
+    private static final String LOCK_KEY_SEPARATOR = ":";
 
     private static final Logger log = LoggerFactory.getLogger(BusinessLockAspect.class);
 
@@ -68,11 +69,14 @@ public class BusinessLockAspect {
         return SpelUtils.parse(target, spel, targetMethod, arguments);
     }
 
+    /**
+     * 构建lockKey
+     *
+     * @param keys 键
+     * @return lockKey
+     */
     public String makeLockKey(String... keys) {
         return StringUtils.join(Arrays.asList(keys), LOCK_KEY_SEPARATOR);
     }
-
-    private static final String LOCK_KEY_SEPARATOR = ":";
-
 
 }

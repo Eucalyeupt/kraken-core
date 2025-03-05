@@ -1,13 +1,13 @@
-package fun.bigtable.kraken.web.helper.impl;
+package fun.bigtable.kraken.web.wrapper.impl;
 
 import fun.bigtable.kraken.bean.Result;
-import fun.bigtable.kraken.web.helper.AbsIdlerBodyGenerate;
+import fun.bigtable.kraken.web.wrapper.AbsIdlerBodyWrapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Component;
 
-@ConditionalOnMissingBean(AbsIdlerBodyGenerate.class)
+@ConditionalOnMissingBean(AbsIdlerBodyWrapper.class)
 @Component
-public class ResultBodyGenerate implements AbsIdlerBodyGenerate {
+public class ResultBodyWrapper implements AbsIdlerBodyWrapper {
 
     @Override
     public Object gen(Object bodyData) {

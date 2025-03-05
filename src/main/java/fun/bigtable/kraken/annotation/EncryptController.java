@@ -8,6 +8,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * 加密控制
+ */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -15,13 +18,11 @@ import java.lang.annotation.Target;
 public @interface EncryptController {
     /**
      * 是否解密请求参数
-     * @return
      */
     boolean req() default true;
 
     /**
      * 是否加密返回值
-     * @return
      */
     boolean res() default true;
 

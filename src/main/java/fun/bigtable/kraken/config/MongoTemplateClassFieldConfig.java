@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.convert.MongoConverter;
 
 
 /**
+ * mongoTemplate配置,去掉_class字段
  */
 @Configuration
 public class MongoTemplateClassFieldConfig implements ApplicationListener<ContextRefreshedEvent> {

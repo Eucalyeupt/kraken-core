@@ -1,9 +1,12 @@
-package fun.bigtable.kraken.util.offset.bean;
+package fun.bigtable.kraken.util.offset;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public abstract class AbstractConsume implements Comparable<AbstractConsume>{
+/**
+ * 核销抽象类
+ */
+public abstract class AbstractConsume implements Comparable<AbstractConsume> {
 
     /**
      * 获取余量
@@ -34,12 +37,12 @@ public abstract class AbstractConsume implements Comparable<AbstractConsume>{
      */
     public abstract Comparable getSort();
 
-    public boolean canResume(){
+    public boolean canResume() {
         return !ConsumeState.ALL_CONSUMED.getCode().equals(getConsumeState());
     }
 
     @Override
-    public int compareTo( AbstractConsume o) {
+    public int compareTo(AbstractConsume o) {
         return getSort().compareTo(o.getSort());
     }
 

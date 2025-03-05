@@ -45,7 +45,7 @@ public class QuartInitializer extends AbstractInitializer {
 
     }
 
-    public String module(){
+    public String module() {
         return "定时任务";
     }
 }

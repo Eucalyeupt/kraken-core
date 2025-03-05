@@ -2,14 +2,29 @@ package fun.bigtable.kraken.trace.bean;
 
 import fun.bigtable.kraken.trace.ITrace;
 
+/**
+ * 默认轨迹
+ */
 public class DefaultTrace implements ITrace {
 
+    /**
+     * 纬度
+     */
     private String lat;
 
+    /**
+     * 经度
+     */
     private String lon;
 
+    /**
+     * utc时间
+     */
     private String utc;
 
+    /**
+     * 唯一标识
+     */
     private String unique;
 
     public void setLat(String lat) {

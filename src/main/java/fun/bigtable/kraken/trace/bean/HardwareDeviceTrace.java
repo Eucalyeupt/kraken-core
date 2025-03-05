@@ -66,7 +66,7 @@ public class HardwareDeviceTrace implements ITrace {
 
     @Override
     public String getUtc() {
-        return DateTimeUtils.formateDate(time);
+        return DateTimeUtils.formatDate(time);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package fun.bigtable.kraken.redis;
+package fun.bigtable.kraken.lock;
 
 import fun.bigtable.kraken.util.DateTimeUtils;
 import jakarta.annotation.Resource;
@@ -8,12 +8,24 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 简单redis锁
+ */
 @Component
 public class RedisSimpleLock {
 
-    @Resource
     StringRedisTemplate stringRedisTemplate;
 
+    public RedisSimpleLock(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
+
+    /**
+     * 加锁
+     *
+     * @param lockKey  锁key
+     * @param lockTime 锁时间
+     */
     public boolean lock(String lockKey, long lockTime) {
         if (Optional.ofNullable(stringRedisTemplate.hasKey(lockKey)).orElse(false)) {
             return false;
@@ -24,7 +36,12 @@ public class RedisSimpleLock {
         return true;
     }
 
-    public void unlock(String lockKey){
+    /**
+     * 解锁
+     *
+     * @param lockKey 锁key
+     */
+    public void unlock(String lockKey) {
         stringRedisTemplate.delete(lockKey);
     }
 

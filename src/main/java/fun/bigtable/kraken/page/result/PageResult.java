@@ -1,17 +1,29 @@
-package fun.bigtable.kraken.helper;
+package fun.bigtable.kraken.page.result;
 
 import java.util.List;
 
 /**
- *  mogodb分页对象
+ * mogodb分页对象
  */
 public class PageResult<T> {
+    /**
+     * 页码，从1开始
+     */
     private Integer pageNum;
 
+    /**
+     * 页面大小
+     */
     private Integer pageSize;
 
+    /**
+     * 总记录数
+     */
     private Long total;
 
+    /**
+     * 总页数
+     */
     private Integer pages;
 
     private List<T> list;

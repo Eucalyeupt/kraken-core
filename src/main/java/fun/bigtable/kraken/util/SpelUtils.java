@@ -12,7 +12,6 @@ import java.util.Objects;
 
 /**
  * spel 处理工具类
- *
  */
 public class SpelUtils {
 
@@ -41,7 +40,7 @@ public class SpelUtils {
      * @return 解析后的字符串
      */
     public static String parse(Object rootObject, String spel, Method method, Object[] args) {
-        if (StringUtils.isEmpty(spel)){
+        if (StringUtils.isEmpty(spel)) {
             return StringUtils.EMPTY;
         }
         // 获取被拦截方法参数名列表(使用Spring支持类库)
